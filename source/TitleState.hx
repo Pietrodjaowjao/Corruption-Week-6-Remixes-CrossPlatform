@@ -220,7 +220,6 @@ class TitleState extends MusicBeatState
 		add(titleText);
 
 		var corruptionmenu:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('titlemenu'));
-		corruptionmenu.scrollFactor.set(0, yScroll);
 		corruptionmenu.updateHitbox();
 		corruptionmenu.screenCenter();
 		corruptionmenu.antialiasing = ClientPrefs.globalAntialiasing;
