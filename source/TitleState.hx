@@ -206,24 +206,6 @@ class TitleState extends MusicBeatState
 		// logoBl.color = FlxColor.BLACK;
 
 		swagShader = new ColorSwap();
-		if(!FlxG.save.data.psykaEasterEgg || !easterEggEnabled) {
-		var gfDance:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('titlemenu'));
-		gfDance.scrollFactor.set(0, yScroll);
-		gfDance.updateHitbox();
-		gfDance.screenCenter();
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
-		}
-		else //Psyka easter egg
-		{
-		var gfDance:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('titlemenu'));
-		gfDance.scrollFactor.set(0, yScroll);
-		gfDance.updateHitbox();
-		gfDance.screenCenter();
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
-		}
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
-		add(gfDance);
-		gfDance.shader = swagShader.shader;
 		add(logoBl);
 		//logoBl.shader = swagShader.shader;
 
@@ -236,6 +218,13 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
+
+		var corruptionmenu:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('titlemenu'));
+		corruptionmenu.scrollFactor.set(0, yScroll);
+		corruptionmenu.updateHitbox();
+		corruptionmenu.screenCenter();
+		corruptionmenu.antialiasing = ClientPrefs.globalAntialiasing;
+		add(corruptionmenu);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
