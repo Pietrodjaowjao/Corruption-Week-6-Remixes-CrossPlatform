@@ -200,17 +200,17 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "weeb/bfPixel",
+	"image": "weeb/bfPixelD1",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf-pixel",
+	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [
 		49,
 		176,
-		189
+		209
 	],
 	"camera_position": [
 		150,

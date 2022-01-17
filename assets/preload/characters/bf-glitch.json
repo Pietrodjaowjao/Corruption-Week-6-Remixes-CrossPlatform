@@ -2,6 +2,50 @@
 	"animations": [
 		{
 			"offsets": [
+				7,
+				19
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "BF NOTE LEFT MISS"
+		},
+		{
+			"offsets": [
+				-15,
+				-19
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "BF NOTE DOWN MISS"
+		},
+		{
+			"offsets": [
+				-36,
+				27
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "BF NOTE UP MISS"
+		},
+		{
+			"offsets": [
+				-44,
+				22
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "BF NOTE RIGHT MISS"
+		},
+		{
+			"offsets": [
 				-3,
 				5
 			],
@@ -90,7 +134,7 @@
 		},
 		{
 			"offsets": [
-				-39,
+				-40,
 				-40
 			],
 			"loop": false,
@@ -98,17 +142,6 @@
 			"anim": "pre-attack",
 			"indices": [],
 			"name": "bf pre attack"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "BF DOWN MISS instance"
 		},
 		{
 			"offsets": [
@@ -139,31 +172,9 @@
 			],
 			"loop": false,
 			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "BF LEFT MISS instance"
-		},
-		{
-			"offsets": [
-				-1,
-				0
-			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
 			"name": "BF LEFT NOTE instance"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "BF RIGHT MISS instance"
 		},
 		{
 			"offsets": [
@@ -183,24 +194,13 @@
 			],
 			"loop": false,
 			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "BF UP MISS instance"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
 			"name": "BF UP NOTE instance"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "weeb/bfPixel",
+	"image": "weeb/bfGlitch",
 	"position": [
 		0,
 		350
@@ -210,10 +210,10 @@
 	"healthbar_colors": [
 		49,
 		176,
-		189
+		209
 	],
 	"camera_position": [
-		150,
+		100,
 		-150
 	],
 	"sing_duration": 4,

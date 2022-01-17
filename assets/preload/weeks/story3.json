@@ -1,0 +1,25 @@
+{
+	"songs": [
+	  ["Senpai Remix", "senpai-pixel", [0, 0, 0]],
+	  ["Dead Pixel", "senpai-pixel", [0, 0, 0]],
+	  ["Treacherous Thorns", "senpai-pixel", [0, 0,0]],
+		["Roots", "spirit-pixel", [0, 0, 0]]
+	],
+	"hideFreeplay": false,
+	"weekBackground": "none",
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"storyName": "",
+	"weekName": "Custom Week",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}

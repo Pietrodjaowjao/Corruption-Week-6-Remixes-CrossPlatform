@@ -1,14 +1,10 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-620,
 				-360
 			],
-			"anim": "danceLeft",
-			"fps": 24,
-			"name": "GF IDLE",
 			"indices": [
 				30,
 				0,
@@ -26,17 +22,17 @@
 				12,
 				13,
 				14
-			]
+			],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "GF IDLE"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-620,
 				-360
 			],
-			"anim": "danceRight",
-			"fps": 24,
-			"name": "GF IDLE",
 			"indices": [
 				15,
 				16,
@@ -53,11 +49,15 @@
 				27,
 				28,
 				29
-			]
+			],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "GF IDLE"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "weeb/gfPixel",
+	"image": "weeb/gfPixelD3",
 	"position": [
 		0,
 		0
