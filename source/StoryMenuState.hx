@@ -92,6 +92,8 @@ class StoryMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+		FlxG.sound.playMusic(Paths.music('CMENU3'));
+
 		for (i in 0...WeekData.weeksList.length)
 		{
 			WeekData.setDirectoryFromWeek(WeekData.weeksLoaded.get(WeekData.weeksList[i]));
@@ -191,8 +193,6 @@ class StoryMenuState extends MusicBeatState
 		changeWeek();
 		super.closeSubState();
 	}
-
-	FlxG.sound.play(Paths.sound('CMENU3'));
 
 	override function update(elapsed:Float)
 	{
