@@ -192,6 +192,8 @@ class StoryMenuState extends MusicBeatState
 		super.closeSubState();
 	}
 
+	FlxG.sound.play(Paths.sound('CMENU3'));
+
 	override function update(elapsed:Float)
 	{
 		// scoreText.setFormat('VCR OSD Mono', 32);
