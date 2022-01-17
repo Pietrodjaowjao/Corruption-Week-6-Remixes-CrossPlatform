@@ -25,7 +25,6 @@ class FlashingState extends MusicBeatState
 
 		var gfDance:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('WARNING1'));
 		gfDance.updateHitbox();
-		gfDance.screenCenter();
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
 
