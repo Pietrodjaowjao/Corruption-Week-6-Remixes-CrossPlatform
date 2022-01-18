@@ -33,8 +33,5 @@ function onStepHit()
     
     setCharacterX('dad', 0);
     setCharacterY('dad', 800);
-<<<<<<< HEAD
-=======
   end
->>>>>>> 609a5f9c080f0d3f95c8921d7217b8af4fa635bd
 end
