@@ -31,17 +31,18 @@ using StringTools;
 // TO DO: Redo the menu creation system for not being as dumb
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Notes', 'Keyboard Controls', 'Mobile Controls', 'Preferences'];
+	var options:Array<String> = ['Keyboard Controls', 'Mobile Controls', 'Preferences'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;		
+	public static var TV:FlxSprite;	
 
 	override function create() {
 		#if desktop
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('optionsBack'));
 		menuBG.color = 0xFFea71fd;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
@@ -60,6 +61,15 @@ class OptionsState extends MusicBeatState
 			grpOptions.add(optionText);
 		}
 		changeSelection();
+
+		TV = new FlxSprite().loadGraphic(Paths.image('tv'));
+		TV.color = 0xFFea71fd;
+		TV.setGraphicSize(Std.int(TV.width * 1.1));
+		TV.updateHitbox();
+		TV.screenCenter();
+		TV.antialiasing = ClientPrefs.globalAntialiasing;
+		add(TV);
+
 
 		#if mobileC
 		addVirtualPad(UP_DOWN, A_B);
@@ -98,8 +108,6 @@ class OptionsState extends MusicBeatState
                         _virtualpad.alpha = 0;
 
 			switch(options[curSelected]) {
-				case 'Notes':
-				 	openSubState(new NotesSubstate());
 				case 'Keyboard Controls':                                        
 					openSubState(new ControlsSubstate());
 				case 'Mobile Controls':
@@ -742,7 +750,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 		#end
 		'GAMEPLAY',
 		'Downscroll',
-		'Middlescroll',
 		'Ghost Tapping',
 		'Note Delay',
 		'Note Splashes',
@@ -926,9 +933,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Downscroll':
 						ClientPrefs.downScroll = !ClientPrefs.downScroll;
 
-					case 'Middlescroll':
-						ClientPrefs.middleScroll = !ClientPrefs.middleScroll;
-
 					case 'Ghost Tapping':
 						ClientPrefs.ghostTapping = !ClientPrefs.ghostTapping;
 
@@ -1028,12 +1032,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If checked, disables some background details,\ndecreases loading times and improves performance.";
 			case 'Persistent Cached Data':
 				daText = "If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.";
-			case 'Anti-Aliasing':
-				daText = "If unchecked, disables anti-aliasing, increases performance\nat the cost of the graphics not looking as smooth.";
 			case 'Downscroll':
 				daText = "If checked, notes go Down instead of Up, simple enough.";
-			case 'Middlescroll':
-				daText = "If checked, hides Opponent's notes and your notes get centered.";
 			case 'Ghost Tapping':
 				daText = "If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.";
 			case 'Swearing':
@@ -1112,8 +1112,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.flashing;
 					case 'Downscroll':
 						daValue = ClientPrefs.downScroll;
-					case 'Middlescroll':
-						daValue = ClientPrefs.middleScroll;
 					case 'Ghost Tapping':
 						daValue = ClientPrefs.ghostTapping;
 					case 'Swearing':
