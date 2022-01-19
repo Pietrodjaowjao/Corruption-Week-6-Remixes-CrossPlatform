@@ -70,7 +70,7 @@ class OptionsState extends MusicBeatState
 		TV.antialiasing = ClientPrefs.globalAntialiasing;
 		add(TV);
 
-               new(Strength:Int = 4, Size:Int = 1, Delay:Float = 0.05, ?Direction:FlxGlitchDirection);
+               new(Strength:Int = 4, Size:Int = 1, Delay:Float = 0.05, ?Direction:FlxGlitchDirection)
 
 
 		#if mobileC
