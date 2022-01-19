@@ -63,14 +63,13 @@ class OptionsState extends MusicBeatState
 		changeSelection();
 
 		TV = new FlxSprite().loadGraphic(Paths.image('tv'));
+              TV = new(Strength:Int = 4, Size:Int = 1, Delay:Float = 0.05, ?Direction:FlxGlitchDirection)
 		TV.color = 0xFFea71fd;
 		TV.setGraphicSize(Std.int(TV.width * 1.1));
 		TV.updateHitbox();
 		TV.screenCenter();
 		TV.antialiasing = ClientPrefs.globalAntialiasing;
 		add(TV);
-
-               new(Strength:Int = 4, Size:Int = 1, Delay:Float = 0.05, ?Direction:FlxGlitchDirection)
 
 
 		#if mobileC
