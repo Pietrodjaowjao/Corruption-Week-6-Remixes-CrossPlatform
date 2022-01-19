@@ -1,0 +1,48 @@
+{
+	"songs": [
+		[
+			"Pico-Remix",
+			"pico1",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Philly-Not-Nice",
+			"pico2",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Blammer",
+			"pico3",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"hideFreeplay": false,
+	"weekBackground": "philly",
+	"weekCharacters": [
+		"pico",
+		"bf",
+		"gf"
+	],
+	"storyName": "goodbye to an old friend",
+	"weekName": "pico",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}
