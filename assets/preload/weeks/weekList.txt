@@ -1,2 +1,6 @@
 story3
+<<<<<<< HEAD
 pico
+=======
+pico
+>>>>>>> 5daecc7de36bb9e10314a725644db044e1a9b55d
