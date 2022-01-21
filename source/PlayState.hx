@@ -44,6 +44,7 @@ import openfl.filters.ShaderFilter;
 import openfl.utils.Assets as OpenFlAssets;
 import editors.ChartingState;
 import editors.CharacterEditorState;
+import Shaders;
 import flixel.group.FlxSpriteGroup;
 import Achievements;
 import StageData;
