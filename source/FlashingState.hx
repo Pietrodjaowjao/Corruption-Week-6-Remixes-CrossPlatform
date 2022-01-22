@@ -28,6 +28,11 @@ class FlashingState extends MusicBeatState
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		add(gfDance);
 
+              ClientPrefs.flashing = false;
+	       ClientPrefs.globalAntialiasing = false;                                       
+	       ClientPrefs.ghostTapping; = false;
+	       ClientPrefs.saveSettings();
+
 		#if mobileC
 		addVirtualPad(NONE, A_B);
 		#end
@@ -41,10 +46,6 @@ class FlashingState extends MusicBeatState
 				leftState = true;
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
-					ClientPrefs.flashing = false;
-					ClientPrefs.globalAntialiasing = false;                                       
-					ClientPrefs.ghostTapping; = false;
-					ClientPrefs.saveSettings();
 				if(!back) {
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
