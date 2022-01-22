@@ -23,21 +23,19 @@ class OptionsMenu extends MusicBeatState
 
 	override function create()
 	{
-		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		controlsStrings = CoolUtil.coolTextFile(Paths.txt('controls'));
-		menuBG.color = 0xFFea71fd;
+		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('optionsBack'));
+		controlsStrings = CoolUtil.coolTextFile(Paths.txt('controls'));		
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
-		menuBG.antialiasing = true;
+		menuBG.antialiasing = false;
 		add(menuBG);
 
-		TV = new FlxSprite().loadGraphic(Paths.image('tv'));
-		TV.color = 0xFFea71fd;
+		var TV:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tv'));
 		TV.setGraphicSize(Std.int(TV.width * 1.1));
 		TV.updateHitbox();
 		TV.screenCenter();
-		TV.antialiasing = ClientPrefs.globalAntialiasing;
+		TV.antialiasing = false;
 		add(TV);
 
 
@@ -91,15 +89,6 @@ class OptionsMenu extends MusicBeatState
 		 */
 	}
 
-	function waitingInput():Void
-	{
-		if (FlxG.keys.getIsDown().length > 0)
-		{
-			PlayerSettings.player1.controls.replaceBinding(Control.LEFT, Keys, FlxG.keys.getIsDown()[0].ID, null);
-		}
-		// PlayerSettings.player1.controls.replaceBinding(Control)
-	}
-
 	var isSettingControl:Bool = false;
 
 	function changeBinding():Void
@@ -112,9 +101,6 @@ class OptionsMenu extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		#if !switch
-		NGio.logEvent('Fresh');
-		#end
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
