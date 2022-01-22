@@ -19,7 +19,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Botplay', 'Chart Editor', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Chart Editor', 'Exit to menu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -66,7 +66,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelDifficulty);
 
 		var blueballedTxt:FlxText = new FlxText(20, 15 + 64, 0, "", 32);
-		blueballedTxt.text = "Blueballed: " + PlayState.deathCounter;
+		blueballedTxt.text = "UnCorrupted: " + PlayState.deathCounter;
 		blueballedTxt.scrollFactor.set();
 		blueballedTxt.setFormat(Paths.font('vcr.ttf'), 32);
 		blueballedTxt.updateHitbox();
@@ -168,23 +168,12 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				case "Resume":
 					close();
-				case 'Change Difficulty':
-					menuItems = difficultyChoices;
-					regenMenu();
 				case "Chart Editor":
 				    MusicBeatState.switchState(new editors.ChartingState());
-				case 'Toggle Practice Mode':
-					PlayState.practiceMode = !PlayState.practiceMode;
-					PlayState.usedPractice = true;
-					practiceText.visible = PlayState.practiceMode;
 				case "Restart Song":
 					CustomFadeTransition.nextCamera = transCamera;
 					MusicBeatState.resetState();
 					FlxG.sound.music.volume = 0;
-				case 'Botplay':
-					PlayState.cpuControlled = !PlayState.cpuControlled;
-					PlayState.usedPractice = true;
-					botplayText.visible = PlayState.cpuControlled;
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
@@ -194,7 +183,7 @@ class PauseSubState extends MusicBeatSubstate
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
 					}
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('CMENU0'));
 					PlayState.usedPractice = false;
 					PlayState.changedDifficulty = false;
 					PlayState.cpuControlled = false;
