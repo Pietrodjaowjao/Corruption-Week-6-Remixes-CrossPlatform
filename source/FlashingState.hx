@@ -29,7 +29,11 @@ class FlashingState extends MusicBeatState
 		add(gfDance);
 
               ClientPrefs.flashing = false;
-	       ClientPrefs.globalAntialiasing = false;                                       
+	       ClientPrefs.saveSettings();
+
+	       ClientPrefs.globalAntialiasing = false; 
+	       ClientPrefs.saveSettings();       
+                               
 	       ClientPrefs.ghostTapping; = false;
 	       ClientPrefs.saveSettings();
 
