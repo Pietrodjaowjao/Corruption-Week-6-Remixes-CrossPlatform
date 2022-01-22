@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 
 class OptionsSubState extends MusicBeatSubstate
 {
-	var textMenuItems:Array<String> = ['Master Volume', 'Sound Volume', 'Mobile Controls'];
+	var textMenuItems:Array<String> = ['Mobile Controls'];
 
 	var selector:FlxSprite;
 	var curSelected:Int = 0;
@@ -33,6 +33,15 @@ class OptionsSubState extends MusicBeatSubstate
 		}
 	}
 
+	override function create()
+{
+		#if mobileC
+		addVirtualPad(NONE, A_B);
+		#end	
+
+		super.create();
+		}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -51,7 +60,7 @@ class OptionsSubState extends MusicBeatSubstate
 
 		grpOptionsTexts.forEach(function(txt:FlxText)
 		{
-			txt.color = FlxColor.WHITE;
+			txt.color = FlxColor.GREEN;
 
 			if (txt.ID == curSelected)
 				txt.color = FlxColor.YELLOW;

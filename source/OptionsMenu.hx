@@ -38,11 +38,6 @@ class OptionsMenu extends MusicBeatState
 		TV.antialiasing = false;
 		add(TV);
 
-
-		#if mobileC
-		addVirtualPad(UP_DOWN, A_B);
-		#end	
-
 		/* 
 			grpControls = new FlxTypedGroup<Alphabet>();
 			add(grpControls);
