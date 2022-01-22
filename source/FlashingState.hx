@@ -57,6 +57,7 @@ class FlashingState extends MusicBeatState
 					ClientPrefs.flashing = false;
 					ClientPrefs.globalAntialiasing = false;
 					ClientPrefs.ghostTapping; = false;
+					ClientPrefs.saveSettings();
 					FlxTween.tween(warnText, {alpha: 0}, 1, {
 						onComplete: function (twn:FlxTween) {
 							MusicBeatState.switchState(new TitleState());
