@@ -66,6 +66,11 @@ class OptionsSubState extends MusicBeatSubstate
 				txt.color = FlxColor.YELLOW;
 		});
 
+		if (controls.back)
+		{
+		 FlxG.state.openSubState(new MainMenuState());
+			}
+
 		if (controls.ACCEPT)
 		{
 			switch (textMenuItems[curSelected])
