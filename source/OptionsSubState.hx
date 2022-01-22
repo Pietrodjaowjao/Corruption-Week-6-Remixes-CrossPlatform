@@ -35,6 +35,13 @@ class OptionsSubState extends MusicBeatSubstate
 
 	override function create()
 {
+
+		var TV:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tv'));
+		TV.updateHitbox();
+		TV.screenCenter();
+		TV.antialiasing = false;
+		add(TV);
+
 		#if mobileC
 		addVirtualPad(NONE, A_B);
 		#end	

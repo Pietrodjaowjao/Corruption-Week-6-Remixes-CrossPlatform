@@ -31,13 +31,6 @@ class OptionsMenu extends MusicBeatState
 		menuBG.antialiasing = false;
 		add(menuBG);
 
-		var TV:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tv'));
-		TV.setGraphicSize(Std.int(TV.width * 1.1));
-		TV.updateHitbox();
-		TV.screenCenter();
-		TV.antialiasing = false;
-		add(TV);
-
 		/* 
 			grpControls = new FlxTypedGroup<Alphabet>();
 			add(grpControls);
