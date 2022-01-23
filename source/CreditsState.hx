@@ -49,7 +49,7 @@ class CreditsState extends MusicBeatState
 			['Psych Engine Android Port'],
 			['M.A. Jigsaw',		    'majigsaw',		    'Main Coder of The Port',	 'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ',	'0xFFC30085'],
 			['Porter of Corruption'],
-			['PietroDev',		    'pietronicolas',		    'Main Coder, coded mechanics and menus',	 'https://youtube.com/c/PietronicolasOFC',	'0xFFC30085'],
+			['PietroDev',		    'pietronicolas',		    'Main Coder, coded week 2, mechanics and menus',	 'https://youtube.com/c/PietronicolasOFC',	'0xFFC30085'],
 			['Helper of Corruption'],
 			['Dxgamer',		    'dxgamer',		    'Pico Story Porter',	 'https://youtube.com/c/Dxgamer7405',	'0xFFC30085'],
 			['TheOrda',		    'polybiusproxy',		    'Senpai Story Porter',	 'https://www.youtube.com/channel/UCKiQ1fRDI0RPKIOI-TavcQw',	'0xFFC30085'],
