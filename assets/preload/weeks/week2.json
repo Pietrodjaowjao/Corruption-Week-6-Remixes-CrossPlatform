@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Spookeez", "spooky", [34, 51, 68]],
+		["Sanguine-South", "spooky", [34, 51, 68]],
+		["Chiller", "spooky", [34, 51, 68]]
+	],
+
+	"weekCharacters": [
+		"spooky",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "halloween",
+
+	"storyName": "GOOD TIMES MUST END",
+	"weekBefore": "tutorial",
+	"weekName": "Corrupted Week 2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

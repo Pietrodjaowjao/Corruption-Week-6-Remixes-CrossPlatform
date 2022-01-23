@@ -394,6 +394,57 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 				}
 
+			case 'spookyD1': //Week 2 - Day 1
+				if(!ClientPrefs.lowQuality) {
+					halloweenBG = new BGSprite('HalloweenBG_D1', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
+				} else {
+					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
+				}
+				add(halloweenBG);
+
+				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				halloweenWhite.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
+				halloweenWhite.alpha = 0;
+				halloweenWhite.blend = ADD;
+
+				//PRECACHE SOUNDS
+				CoolUtil.precacheSound('thunder_1');
+				CoolUtil.precacheSound('thunder_2');
+
+			case 'spookyD2': //Week 2 - Day 2
+				if(!ClientPrefs.lowQuality) {
+					halloweenBG = new BGSprite('HalloweenBG_D2', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
+				} else {
+					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
+				}
+				add(halloweenBG);
+
+				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				halloweenWhite.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
+				halloweenWhite.alpha = 0;
+				halloweenWhite.blend = ADD;
+
+				//PRECACHE SOUNDS
+				CoolUtil.precacheSound('thunder_1');
+				CoolUtil.precacheSound('thunder_2');
+
+			case 'spookyD3': //Week 2 - Day 3
+				if(!ClientPrefs.lowQuality) {
+					halloweenBG = new BGSprite('HalloweenBG_D3', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
+				} else {
+					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
+				}
+				add(halloweenBG);
+
+				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
+				halloweenWhite.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
+				halloweenWhite.alpha = 0;
+				halloweenWhite.blend = ADD;
+
+				//PRECACHE SOUNDS
+				CoolUtil.precacheSound('thunder_1');
+				CoolUtil.precacheSound('thunder_2');
+
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);

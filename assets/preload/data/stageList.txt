@@ -1,5 +1,7 @@
 stage
-spooky
+spookyD1
+spookyD2
+spookyD3
 philly
 limo
 mall
