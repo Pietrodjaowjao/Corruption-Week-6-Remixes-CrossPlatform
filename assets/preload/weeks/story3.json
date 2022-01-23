@@ -6,13 +6,13 @@
 		["Roots", "spirit-pixel", [0, 0, 0]]
 	],
 	"hideFreeplay": false,
-	"weekBackground": "none",
+	"weekBackground": "school",
 	"weekCharacters": [
-		"",
-		"",
-		""
+		"senpai",
+		"bf",
+		"gf"
 	],
-	"storyName": "",
+	"storyName": "DELETE",
 	"weekName": "Custom Week",
 	"freeplayColor": [
 		146,
