@@ -165,6 +165,7 @@ class CustomControlsState extends MusicBeatSubstate
 		var androidback:Bool = false;
 		#end
 		if (exitbutton.justReleased || androidback){
+			save();
 			FlxG.switchState(new OptionsMenu());
 		}
 		
