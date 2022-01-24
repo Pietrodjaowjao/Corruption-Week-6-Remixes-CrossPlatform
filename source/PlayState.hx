@@ -789,14 +789,6 @@ crack3.animation.play('idle');
                             thePhoto.alpha = 0;
                             thePhoto.scrollFactor.set(0.9, 0.9);
                             add(thePhoto);
-                            spikes = new FlxSprite(-150, -75);
-                 spikes.frames = Paths.getSparrowAtlas('mind/OverlayingSpikes');
-                 spikes.animation.addByPrefix('idle', 'Spikes', 24);
-                 spikes.animation.play('idle');
-                 spikes.cameras = [camHUD];
-                 spikes.scrollFactor.set(0.9, 0.9);
-                 spikes.setGraphicSize(Std.int(spikes.width * 0.9));
-                 add(spikes);
 
 			case 'limo': //Week 4
 				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
@@ -1231,15 +1223,6 @@ crack3.animation.play('idle');
 				guitarStrumline = new FlxSprite().loadGraphic(Paths.image("dischargeAssets/GH_Notes_Strums"));
 				guitarStrumline.alpha = 0;
 				guitarStrumline.scrollFactor.set();
-
-
-						JUMPSCARE = new FlxSprite().loadGraphic(Paths.image('GETFUCKEDKID'));
-						JUMPSCARE.antialiasing = true;
-						JUMPSCARE.scrollFactor.set(0.9, 0.9);
-						JUMPSCARE.active = false;
-						JUMPSCARE.alpha = 0;
-						JUMPSCARE.screenCenter();
-						add(JUMPSCARE);
 
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
