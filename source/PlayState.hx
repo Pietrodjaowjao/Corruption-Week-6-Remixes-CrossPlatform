@@ -3818,6 +3818,28 @@ crack3.animation.play('idle');
 		}
 	}
 
+function guitarGo()
+    {
+        guitar.alpha = 0;
+        remove(strumLineNotes);
+        strumLineNotes = new FlxTypedGroup<FlxSprite>();
+        add(strumLineNotes);
+        strumLineNotes.cameras = [camHUD];
+        dischargeSongGenerateStaticArrows(1, 'guitar');
+        FlxTween.tween(guitarStrumline, {alpha:1}, 0.8);
+    }
+function guitarPoof()
+    {
+        guitar.alpha = 1;
+        remove(strumLineNotes);
+        strumLineNotes = new FlxTypedGroup<FlxSprite>();
+        add(strumLineNotes);
+        strumLineNotes.cameras = [camHUD];
+        dischargeSongGenerateStaticArrows(0, 'discharge');
+        dischargeSongGenerateStaticArrows(1, 'discharge');
+        FlxTween.tween(guitarStrumline, {alpha:0}, 0.8);
+    }
+
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
 		//Dupe note remove
 		notes.forEachAlive(function(note:Note) {
