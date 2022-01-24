@@ -1579,24 +1579,6 @@ crack3.animation.play('idle');
 					
 		}
 
-	function two():Void
-		{
-			var two:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/ready'));
-			two.scrollFactor.set();
-			two.screenCenter();
-			two.y -= 100;
-			two.alpha = 0.5;
-					add(two);
-					FlxTween.tween(two, {y: two.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							two.destroy();
-						}
-					});
-					
-		}
-
 		function one():Void
 			{
 				var one:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/set'));
@@ -2001,8 +1983,8 @@ crack3.animation.play('idle');
 		var playerCounter:Int = 0;
 
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
-		for (section in noteData)
 		{
+		for (section in noteData)
             if (curSong == 'Discharge')
             {
                     switch (daSection)
@@ -2169,33 +2151,33 @@ crack3.animation.play('idle');
 		var earlyTime2:Float = eventNoteEarlyTrigger(Obj2);
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1[0] - earlyTime1, Obj2[0] - earlyTime2);
 	}
-
-	private function generateStaticArrows(player:Int):Void
-	{
-		for (i in 0...4)
-		{
-			// FlxG.log.add(i);
-			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
-			if (!isStoryMode)
-			{
-				babyArrow.y -= 10;
-				babyArrow.alpha = 0;
-				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
-			}
-
-			if (player == 1)
-			{
-				playerStrums.add(babyArrow);
-			}
-			else
-			{
-				opponentStrums.add(babyArrow);
-			}
-
-			strumLineNotes.add(babyArrow);
-			babyArrow.postAddedToGroup();
-		}
 	}
+	private function generateStaticArrows(player:Int):Void
+		{
+			for (i in 0...4)
+			{
+				// FlxG.log.add(i);
+				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
+				if (!isStoryMode)
+				{
+					babyArrow.y -= 10;
+					babyArrow.alpha = 0;
+					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+				}
+	
+				if (player == 1)
+				{
+					playerStrums.add(babyArrow);
+				}
+				else
+				{
+					opponentStrums.add(babyArrow);
+				}
+	
+				strumLineNotes.add(babyArrow);
+				babyArrow.postAddedToGroup();
+			}
+		}
 
 	override function openSubState(SubState:FlxSubState)
 	{
