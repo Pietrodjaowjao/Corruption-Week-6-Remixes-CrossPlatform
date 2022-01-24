@@ -145,9 +145,9 @@ class PlayState extends MusicBeatState
 	private static var prevCamFollowPos:FlxObject;
 	private static var resetSpriteCache:Bool = false;
 
-	public var strumLineNotes:FlxTypedGroup<StrumNote>;
-	public var opponentStrums:FlxTypedGroup<StrumNote>;
-	public var playerStrums:FlxTypedGroup<StrumNote>;
+	private var strumLineNotes:FlxTypedGroup<StrumNote>;
+	private var playerStrums:FlxTypedGroup<StrumNote>;
+	private var enemyStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	public var camZooming:Bool = false;
@@ -1674,7 +1674,17 @@ crack3.animation.play('idle');
 		if(startedCountdown) {
 			callOnLuas('onStartCountdown', []);
 			return;
-		}
+
+        if (SONG.song.toLowerCase() == 'discharge')
+        {
+            dischargeSongGenerateStaticArrows(1, 'discharge');
+        }
+        else
+        {
+            generateStaticArrows(0, SONG.noteStyle);
+            generateStaticArrows(1, SONG.noteStyle);
+        }
+      }
 
 		inCutscene = false;
 		var ret:Dynamic = callOnLuas('onStartCountdown', []);
@@ -3305,7 +3315,7 @@ crack3.animation.play('idle');
 		for (i in 0...4)
 		{
 			// FlxG.log.add(i);
-			var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
+				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
             
 			switch (style)
 			{
@@ -3527,7 +3537,7 @@ crack3.animation.play('idle');
 
 			if (player == 1)
 			{
-				StrumNote.add(babyArrow);
+				playerStrums.add(babyArrow);
 			}
 			else
 			{
@@ -3536,15 +3546,18 @@ crack3.animation.play('idle');
 					if(name == "confirm"){
 						babyArrow.animation.play('static', true);
 						babyArrow.centerOffsets();
+						if (dad.curCharacter.startsWith('project-dad'))
+						health -= 0.026;
 					}
 				}
 			}
+
 
 			babyArrow.animation.play('static');
 			babyArrow.x += 50;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
-			StrumNote.add(babyArrow);
+			strumLineNotes.add(babyArrow);
 		}
 	}
 
@@ -4046,18 +4059,23 @@ crack3.animation.play('idle');
 				boyfriend.dance();
 		}
 
-		playerStrums.forEach(function(spr:StrumNote)
-		{
-			if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
-				spr.playAnim('pressed');
-				spr.resetAnim = 0;
+				playerStrums.forEach(function(spr:FlxSprite)
+				{
+					if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
+						spr.animation.play('pressed');
+					if (!holdArray[spr.ID])
+						spr.animation.play('static');
+		 
+					if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school') && !curStage.startsWith('bsideschool'))
+					{
+						spr.centerOffsets();
+						spr.offset.x -= 13;
+						spr.offset.y -= 13;
+					}
+					else
+						spr.centerOffsets();
+				});
 			}
-			if(controlReleaseArray[spr.ID]) {
-				spr.playAnim('static');
-				spr.resetAnim = 0;
-			}
-		});
-	}
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
@@ -4258,14 +4276,24 @@ function guitarPoof()
 				}
 				StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % 4, time);
 			} else {
-				playerStrums.forEach(function(spr:StrumNote)
-				{
-					if (Math.abs(note.noteData) == spr.ID)
+				playerStrums.forEach(function(spr:FlxSprite)
 					{
-						spr.playAnim('confirm', true);
-					}
-				});
-			}
+						if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
+							spr.animation.play('pressed');
+						if (!holdArray[spr.ID])
+							spr.animation.play('static');
+			 
+						if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school') && !curStage.startsWith('bsideschool'))
+						{
+							spr.centerOffsets();
+							spr.offset.x -= 13;
+							spr.offset.y -= 13;
+						}
+						else
+							spr.centerOffsets();
+					});
+				}
+
 			note.wasGoodHit = true;
 			vocals.volume = 1;
 
@@ -4281,34 +4309,6 @@ function guitarPoof()
 				note.destroy();
 			}
 		}
-	}
-
-	function spawnNoteSplashOnNote(note:Note) {
-		if(ClientPrefs.noteSplashes && note != null) {
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
-			}
-		}
-	}
-
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
-		
-		var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
-		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
-		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
-		if(note != null) {
-			skin = note.noteSplashTexture;
-			hue = note.noteSplashHue;
-			sat = note.noteSplashSat;
-			brt = note.noteSplashBrt;
-		}
-
-		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
-		grpNoteSplashes.add(splash);
 	}
 
 	var fastCarCanDrive:Bool = true;
