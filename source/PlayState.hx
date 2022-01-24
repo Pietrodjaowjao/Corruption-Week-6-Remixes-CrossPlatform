@@ -2122,7 +2122,7 @@ crack3.animation.play('idle');
 		var earlyTime2:Float = eventNoteEarlyTrigger(Obj2);
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1[0] - earlyTime1, Obj2[0] - earlyTime2);
 	}
-	}
+
 	private function generateStaticArrows(player:Int):Void
 		{
 			for (i in 0...4)
