@@ -258,8 +258,6 @@ class PlayState extends MusicBeatState
     var blammedcut2:FlxSprite;
     var neurosesStaticOverlay:FlxSprite;
 
-	var daSection:Int = 1;
-
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var bgGhouls:BGSprite;
@@ -1970,20 +1968,6 @@ crack3.animation.play('idle');
 		var playerCounter:Int = 0;
 
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
-		{
-		for (section in noteData)
-            if (curSong == 'Discharge')
-            {
-                    switch (daSection)
-                    {
-                        case 0 | 59: SONG.noteStyle = 'discharge';    
-                        case 50: SONG.noteStyle = 'guitar';
-                        case 97: SONG.noteStyle = 'guitar';
-                        case 106: SONG.noteStyle = 'discharge';
-                        case 217: SONG.noteStyle = 'guitar';
-                        case 223: SONG.noteStyle = 'discharge';
-                    }
-            }
 
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var file:String = Paths.json(songName + '/events');
