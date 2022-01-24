@@ -3527,7 +3527,7 @@ crack3.animation.play('idle');
 
 			if (player == 1)
 			{
-				playerStrums.add(babyArrow);
+				StrumNote.add(babyArrow);
 			}
 			else
 			{
@@ -3544,7 +3544,7 @@ crack3.animation.play('idle');
 			babyArrow.x += 50;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
-			strumLineNotes.add(babyArrow);
+			StrumNote.add(babyArrow);
 		}
 	}
 
