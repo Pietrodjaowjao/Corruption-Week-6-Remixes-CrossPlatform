@@ -192,6 +192,7 @@ class PlayState extends MusicBeatState
 
    // shit for discharge
 	var cave1:FlxSprite;
+	var neurosesbg:FlxSprite;
 	var cave2:FlxSprite;
 	var space:FlxSprite;
 	var popup:FlxSprite;
@@ -4243,7 +4244,7 @@ crack3.animation.play('idle');
         //discharge shit :DDDDD 
          if (curStep == 1 && curSong == 'Discharge')
         {
-            EnemyStrums.alpha = 0;
+            opponentStrums.alpha = 0;
             healthBarBG.alpha = 0;
             healthBar.alpha = 0;
 
