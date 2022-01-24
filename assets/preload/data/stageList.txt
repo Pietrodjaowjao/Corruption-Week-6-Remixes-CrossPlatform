@@ -1,5 +1,4 @@
 stage
-BFMind3
 spookyD1
 spookyD2
 spookyD3

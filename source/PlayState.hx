@@ -4177,12 +4177,6 @@ crack3.animation.play('idle');
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
-	}
-
-	var lightningStrikeBeat:Int = 0;
-	var lightningOffset:Int = 8;
-
-	var lastBeatHit:Int = -1;
 
 			if (curSong == 'Discharge')
 				{
@@ -4763,7 +4757,12 @@ crack3.animation.play('idle');
         {
             funnyWhite.alpha -= 0.01;
         }
+	}
 
+	var lightningStrikeBeat:Int = 0;
+	var lightningOffset:Int = 8;
+
+	var lastBeatHit:Int = -1;
 	override function beatHit()
 	{
 		super.beatHit();
