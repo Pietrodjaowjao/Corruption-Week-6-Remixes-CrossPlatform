@@ -1160,10 +1160,6 @@ crack3.animation.play('idle');
 		add(strumLineNotes);
 		add(grpNoteSplashes);
 
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
-		grpNoteSplashes.add(splash);
-		splash.alpha = 0.0;
-
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -4199,8 +4195,6 @@ function guitarPoof()
 
 			if(note.hitCausesMiss) {
 				noteMiss(note);
-				if(!note.noteSplashDisabled && !note.isSustainNote) {
-					spawnNoteSplashOnNote(note);
 				}
 
 				switch(note.noteType) {
