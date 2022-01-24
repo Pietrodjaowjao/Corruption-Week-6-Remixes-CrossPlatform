@@ -3822,7 +3822,7 @@ function guitarGo()
     {
         guitar.alpha = 0;
         remove(strumLineNotes);
-        strumLineNotes = new FlxTypedGroup<FlxSprite>();
+        strumLineNotes = new FlxTypedGroup<StrumNote>();
         add(strumLineNotes);
         strumLineNotes.cameras = [camHUD];
         dischargeSongGenerateStaticArrows(1, 'guitar');
@@ -3832,7 +3832,7 @@ function guitarPoof()
     {
         guitar.alpha = 1;
         remove(strumLineNotes);
-        strumLineNotes = new FlxTypedGroup<FlxSprite>();
+        strumLineNotes = new FlxTypedGroup<StrumNote>();
         add(strumLineNotes);
         strumLineNotes.cameras = [camHUD];
         dischargeSongGenerateStaticArrows(0, 'discharge');
