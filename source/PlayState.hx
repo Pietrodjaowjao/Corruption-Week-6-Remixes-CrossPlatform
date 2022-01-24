@@ -3300,6 +3300,254 @@ crack3.animation.play('idle');
 		
 	}
 
+	function dischargeSongGenerateStaticArrows(player:Int,style:String,tweenShit:Bool = true):Void
+	{
+		for (i in 0...4)
+		{
+			// FlxG.log.add(i);
+			var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
+            
+			switch (style)
+			{
+				case 'pixel':
+					babyArrow.loadGraphic(Paths.image('pixelAssets/pixelUI/arrows-pixels'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+				case 'guitar':
+					babyArrow.frames = Paths.getSparrowAtlas('dischargeAssets/GH_Notes');
+					babyArrow.animation.addByPrefix('green', 'upNoteBaby');
+					babyArrow.animation.addByPrefix('blue', 'downNoteBaby');
+					babyArrow.animation.addByPrefix('purple', 'leftNoteBaby');
+					babyArrow.animation.addByPrefix('red', 'rightNoteBaby');
+	
+					babyArrow.antialiasing = true;
+	
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0 - 280;
+							babyArrow.animation.addByPrefix('static', 'leftNoteBaby');
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1 - 280;
+							babyArrow.animation.addByPrefix('static', 'downNoteBaby');
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2 - 280;
+							babyArrow.animation.addByPrefix('static', 'upNoteBaby');
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3 - 280;
+							babyArrow.animation.addByPrefix('static', 'rightNoteBaby');
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+						}
+				case 'rootsArrows':
+					babyArrow.loadGraphic(Paths.image('pixelAssets/pixelUI/rootsArrows'), true, 17, 17);
+					babyArrow.animation.add('green', [6]);
+					babyArrow.animation.add('red', [7]);
+					babyArrow.animation.add('blue', [5]);
+					babyArrow.animation.add('purplel', [4]);
+
+					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
+					babyArrow.updateHitbox();
+					babyArrow.antialiasing = false;
+
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.add('static', [0]);
+							babyArrow.animation.add('pressed', [4, 8], 12, false);
+							babyArrow.animation.add('confirm', [12, 16], 24, false);
+						case 1:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.add('static', [1]);
+							babyArrow.animation.add('pressed', [5, 9], 12, false);
+							babyArrow.animation.add('confirm', [13, 17], 24, false);
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.add('static', [2]);
+							babyArrow.animation.add('pressed', [6, 10], 12, false);
+							babyArrow.animation.add('confirm', [14, 18], 12, false);
+						case 3:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.add('static', [3]);
+							babyArrow.animation.add('pressed', [7, 11], 12, false);
+							babyArrow.animation.add('confirm', [15, 19], 24, false);
+					}
+				
+					case 'normal':
+                        babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets_NORMAL');
+                        babyArrow.animation.addByPrefix('green', 'arrowUP');
+                        babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+                        babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+                        babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+    
+                        babyArrow.antialiasing = true;
+                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+    
+                        switch (Math.abs(i))
+                        {
+                            case 0:
+                                babyArrow.x += Note.swagWidth * 0;
+                                babyArrow.animation.addByPrefix('static', 'arrowLEFT');
+                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+                            case 1:
+                                babyArrow.x += Note.swagWidth * 1;
+                                babyArrow.animation.addByPrefix('static', 'arrowDOWN');
+                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+                            case 2:
+                                babyArrow.x += Note.swagWidth * 2;
+                                babyArrow.animation.addByPrefix('static', 'arrowUP');
+                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+                            case 3:
+                                babyArrow.x += Note.swagWidth * 3;
+                                babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
+                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+						}
+					case 'discharge':
+                        babyArrow.frames = Paths.getSparrowAtlas('dischargeAssets/Discharge_Notes');
+                        babyArrow.animation.addByPrefix('green', 'green0');
+                        babyArrow.animation.addByPrefix('blue', 'blue0');
+                        babyArrow.animation.addByPrefix('purple', 'purple0');
+                        babyArrow.animation.addByPrefix('red', 'red0');
+    
+                        babyArrow.antialiasing = true;
+                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+    
+                        switch (Math.abs(i))
+                        {
+                            case 0:
+                                babyArrow.x += Note.swagWidth * 0;
+                                babyArrow.animation.addByPrefix('static', 'purple0');
+                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+                            case 1:
+                                babyArrow.x += Note.swagWidth * 1;
+                                babyArrow.animation.addByPrefix('static', 'blue0');
+                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+                            case 2:
+                                babyArrow.x += Note.swagWidth * 2;
+                                babyArrow.animation.addByPrefix('static', 'green0');
+                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+                            case 3:
+                                babyArrow.x += Note.swagWidth * 3;
+                                babyArrow.animation.addByPrefix('static', 'red0');
+                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+						}
+	
+					default:
+                        babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+                        babyArrow.animation.addByPrefix('green', 'arrowUP');
+                        babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+                        babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+                        babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+    
+                        babyArrow.antialiasing = true;
+                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+    
+                        switch (Math.abs(i))
+                        {
+                            case 0:
+                                babyArrow.x += Note.swagWidth * 0;
+                                babyArrow.animation.addByPrefix('static', 'arrowLEFT');
+                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+                            case 1:
+                                babyArrow.x += Note.swagWidth * 1;
+                                babyArrow.animation.addByPrefix('static', 'arrowDOWN');
+                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+                            case 2:
+                                babyArrow.x += Note.swagWidth * 2;
+                                babyArrow.animation.addByPrefix('static', 'arrowUP');
+                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+                            case 3:
+                                babyArrow.x += Note.swagWidth * 3;
+                                babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
+                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+						}
+			}
+
+			babyArrow.updateHitbox();
+			babyArrow.scrollFactor.set();
+
+			if (!isStoryMode)
+			{
+				babyArrow.y -= 10;
+				babyArrow.alpha = 0;
+				FlxTween.tween(babyArrow, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+			}
+
+			babyArrow.ID = i;
+
+			if (player == 1)
+			{
+				playerStrums.add(babyArrow);
+			}
+			else
+			{
+				enemyStrums.add(babyArrow);
+				babyArrow.animation.finishCallback = function(name:String){
+					if(name == "confirm"){
+						babyArrow.animation.play('static', true);
+						babyArrow.centerOffsets();
+					}
+				}
+			}
+
+			babyArrow.animation.play('static');
+			babyArrow.x += 50;
+			babyArrow.x += ((FlxG.width / 2) * player);
+
+			strumLineNotes.add(babyArrow);
+		}
+	}
+
 	function tweenCamIn() {
 		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
