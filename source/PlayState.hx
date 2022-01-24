@@ -1544,65 +1544,7 @@ crack3.animation.play('idle');
 				startCountdown();
 			}
 		}
-	}
-
-	function two():Void
-		{
-			var two:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/ready'));
-			two.scrollFactor.set();
-			two.screenCenter();
-			two.y -= 100;
-			two.alpha = 0.5;
-					add(two);
-					FlxTween.tween(two, {y: two.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							two.destroy();
-						}
-					});
-					
-		}
-
-		function one():Void
-			{
-				var one:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/set'));
-				one.scrollFactor.set();
-				one.screenCenter();
-				one.y -= 100;
-				one.alpha = 0.5;
-
-						add(one);
-						FlxTween.tween(one, {y: one.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								one.destroy();
-							}
-						});
-						
-			}
-	
-	function soulGo():Void
-		{
-			var gofun:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/go'));
-			gofun.scrollFactor.set();
-
-			gofun.updateHitbox();
-
-			gofun.screenCenter();
-			gofun.y -= 100;
-			gofun.alpha = 0.5;
-
-					add(gofun);
-					FlxTween.tween(gofun, {y: gofun.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							gofun.destroy();
-						}
-					});
-		}	
+	}	
 
 	var dialogueCount:Int = 0;
 	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
@@ -4241,6 +4183,587 @@ crack3.animation.play('idle');
 	var lightningOffset:Int = 8;
 
 	var lastBeatHit:Int = -1;
+
+			if (curSong == 'Discharge')
+				{
+					switch (curStep)
+					{
+						case 929:
+							FlxTween.tween(missme, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 939:
+							FlxTween.tween(missme, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1181:
+							FlxTween.tween(round2, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1191:
+							FlxTween.tween(round2, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1294:
+							FlxTween.tween(keepup, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1304:
+							FlxTween.tween(keepup, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1557:
+							FlxTween.tween(comeON, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 1567:
+							FlxTween.tween(comeON, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2260:
+							FlxTween.tween(fuckingfocus, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2270:
+							FlxTween.tween(fuckingfocus, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2318:
+							FlxTween.tween(remember, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2328:
+							FlxTween.tween(remember, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2386:
+							FlxTween.tween(friends, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2396:
+							FlxTween.tween(friends, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2949:
+							FlxTween.tween(planning, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2959:
+							FlxTween.tween(planning, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2988:
+							FlxTween.tween(lmaoNo, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 2998:
+							FlxTween.tween(lmaoNo, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3024:
+							FlxTween.tween(thePhoto, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+							thePhoto.animation.play('idle');
+						case 3040:
+							FlxTween.tween(thePhoto, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3327:
+							FlxTween.tween(ditch, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3337:
+							FlxTween.tween(ditch, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3552:
+							FlxTween.tween(mystyle, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3562:
+							FlxTween.tween(mystyle, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3854:
+							FlxTween.tween(endthisShit, {alpha: 1.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+						case 3864:
+							FlxTween.tween(endthisShit, {alpha: 0.0}, 0.8, 
+								{ease: FlxEase.quadInOut});
+								
+	
+					}
+        //discharge shit :DDDDD 
+        if (curStep == 541 && curSong == 'Discharge')
+        {
+            FlxG.camera.shake(0.03, 0.08);
+            crack1.alpha = 1;
+            crack1.animation.play('idle');
+        }
+        if (curStep == 553 && curSong == 'Discharge')
+        {
+            FlxG.camera.shake(0.03, 0.08);
+            crack2.alpha = 1;
+            crack2.animation.play('idle');
+            crack1.alpha = 0;
+        }
+        if (curStep == 561 && curSong == 'Discharge')
+        {
+            iconP2.animation.play('evil-bf');
+        }
+        if (curStep == 561 && curSong == 'Discharge')
+        {
+            FlxG.camera.shake(0.03, 0.08);
+            crack3.alpha = 1;
+            crack3.animation.play('idle');
+            crack2.alpha = 0;
+        }
+        if (curStep == 578 && curSong == 'Discharge')
+        {
+            zapEffect.alpha = 1;
+            crack3.alpha = 0;
+            zapEffect.animation.play('idle');
+        }
+        if (curStep == 600 && curSong == 'Discharge')
+        {
+            for (i in 0...4)
+            {
+                strumLineNotes.members[i].visible = false;
+            }
+        }
+        if (curStep == 578 && curSong == 'Discharge')
+        {
+            boyfriend.playAnim('drugs');
+        }
+        if (curStep == 670 && curSong == 'Discharge')
+        {
+            boyfriend.playAnim('ohSHIT');
+        }
+        if (curStep == 646 && curSong == 'Discharge')
+        {
+            boyfriend.playAnim('cocaine');
+        }
+        if (curStep >= 3327 && curStep <= 3343 && curSong == 'Discharge')
+        {
+            dad.playAnim('singLEFT');
+        }
+        if (curStep == 684 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(805,710,'bf-guitar');
+            add(boyfriend);
+        }
+        if (curStep == 1559 && curSong == 'Discharge')
+        {
+            dad.playAnim('singRIGHT');
+        }
+        if (curStep == 3854 && curSong == 'Discharge')
+        {
+            dad.playAnim('singRIGHT');
+        }
+        if (curStep == 923 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 2449 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-discharge');
+            add(boyfriend);
+        }
+        if (curStep == 1578 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1607 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1642 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1672 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1657 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 1689 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+            dad.playAnim('guitar6');
+        }
+        if (curStep == 1594 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 1626 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 2955 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 2098 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal-2');
+            add(boyfriend);
+        }
+        if (curStep >= 2196 && curStep <= 2246 && curSong == 'Discharge')
+        {
+            portal1.alpha += 0.05;
+        }
+        if (curStep >= 2449 && curStep <= 2500 && curSong == 'Discharge')
+        {
+            portal2.alpha += 0.05;
+        }
+        if (curStep == 792 && curSong == 'Discharge')
+        {
+            guitarGo();
+        }
+        if (curStep == 662 && curSong == 'Discharge')
+        {
+            two();
+        }
+        if (curStep == 666 && curSong == 'Discharge')
+        {
+            one();
+        }
+        if (curStep == 670 && curSong == 'Discharge')
+        {
+            soulGo();
+        }
+        if (curStep == 928 && curSong == 'Discharge')
+        {
+            for (i in 0...4)
+            {
+                strumLineNotes.members[i].alpha = 0;
+            }
+        }
+        if (curStep == 935 && curSong == 'Discharge')
+        {
+            camHUD.alpha = 1;
+            for (i in 0...4)
+            {
+                strumLineNotes.members[i].alpha = 1;
+            }
+            guitarPoof();
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 3470 && curSong == 'Discharge')
+        {
+            guitarGo();
+            remove(boyfriend);
+            boyfriend = new Boyfriend(805,710,'bf-guitar');
+            add(boyfriend);
+        }
+        if (curStep == 3551 && curSong == 'Discharge')
+        {
+            guitarPoof();
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 1562 && curSong == 'Discharge')
+        {
+            guitarGo();
+            remove(boyfriend);
+            boyfriend = new Boyfriend(805,710,'bf-guitar');
+            add(boyfriend);
+        }
+        if (curStep == 1683 && curSong == 'Discharge')
+        {
+            healthBarBG.alpha += 0.03;
+            healthBar.alpha += 0.03;
+            iconP1.alpha += 0.03;
+            iconP2.alpha += 0.03;
+            guitarPoof();
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 580 && curSong == 'Discharge')
+        {
+            dad.visible = true;
+            remove(dad);
+            dad = new Character(30,260, 'evil-bf-guitar-1');
+            add(dad);
+        }
+        if (curStep >= 2068 && curStep <= 2100 && curSong == 'Discharge')
+        {
+            cave1alt.alpha += 0.05;
+            cave2alt.alpha += 0.05;
+            cave3alt.alpha += 0.05;
+        }
+        if (curStep >= 520 && curStep <= 580 && curSong == 'Discharge')
+        {
+            for (i in 0...4)
+            {
+                strumLineNotes.members[i].alpha -= 0.03;
+            }
+        }
+        if (curSong == 'Discharge' && curStep <= 930)
+        {
+            healthBarBG.alpha = 0;
+            healthBar.alpha = 0;
+            iconP1.alpha = 0;
+            iconP2.alpha = 0;
+        }
+        if (curSong == 'Discharge' && curStep == 3036)
+        {
+            cave1alt.alpha = 0;
+            cave2alt.alpha = 0;
+            cave3alt.alpha = 0;
+            portal1.alpha = 0;
+            portal2.alpha = 0;
+        }
+        if (curSong == 'Discharge' && curStep >= 3036 && curStep <= 3150)
+        {
+            cave3.y -= 4;
+        }
+        if (curSong == 'Discharge' && curStep >= 939 && curStep <= 970)
+        {
+            for (i in 0...strumLineNotes.members.length)
+            {
+                strumLineNotes.members[i].alpha += 0.05;
+            }
+            healthBarBG.alpha += 0.03;
+            healthBar.alpha += 0.03;
+            iconP1.alpha += 0.03;
+            iconP2.alpha += 0.03;
+        }
+        if (curStep == 3338 && curSong == 'Discharge')
+        {
+            FlxG.camera.shake(0.03, 0.08);
+            bfCrack1.alpha = 1;
+        }
+        if (curStep == 3547 && curSong == 'Discharge')
+        {
+            FlxG.camera.shake(0.03, 0.08);
+            soulbfCrack1.alpha = 1;
+        }
+        if (curStep == 3751 && curSong == 'Discharge')
+        {
+	    FlxTween.tween(bfCrack2, {alpha: 0.0}, 0.8, 
+		{ease: FlxEase.quadInOut});
+	    FlxTween.tween(soulbfCrack2, {alpha: 0.0}, 0.8, 
+		{ease: FlxEase.quadInOut});
+        }
+        if (curStep == 3614 && curSong == 'Discharge')
+        {
+            soulbfCrack1.alpha = 0;
+            bfCrack1.alpha = 0;
+            FlxG.camera.shake(0.03, 0.08);
+            soulbfCrack2.alpha = 1;
+            bfCrack2.alpha = 1;
+        }
+        if (curStep == 3770 && curSong == 'Discharge')
+        {
+            cave1.alpha = 0;
+            cave2.alpha = 0;
+            cave3.alpha = 0;
+            explode.alpha = 1;
+            explode.animation.play('idle');
+        }
+        if (curStep == 677 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+            dad.playAnim('guitar7');
+        }     
+        if (curStep == 688 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar9');
+        }
+        if (curStep == 700 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar7');
+        }
+        if (curStep == 707 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar4');
+        }
+        if (curStep == 738 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar9');
+        }
+        if (curStep == 740 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar1');
+        }
+        if (curStep == 760 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar7');
+        }
+        if (curStep == 769 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar4');
+        }
+        if (curStep == 771 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar1');
+        }
+        if (curStep == 785 && curSong == 'Discharge')
+        {
+            dad.playAnim('guitar7');
+        }
+        if (curStep == 1342 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-2');
+            add(dad);
+        }
+        if (curStep == 1436 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep >= 1437 && curStep <= 1470 && curSong == 'Discharge')
+        {
+            for (i in 0...strumLineNotes.members.length)
+            {
+                strumLineNotes.members[i].alpha -= 0.05;
+            }
+            healthBarBG.alpha -= 0.03;
+            healthBar.alpha -= 0.03;
+            iconP1.alpha -= 0.03;
+            iconP2.alpha -= 0.03;
+        }
+        if (curStep >= 1688 && curStep <= 1720 && curSong == 'Discharge')
+        {
+            for (i in 0...strumLineNotes.members.length)
+            {
+                strumLineNotes.members[i].alpha += 0.05;
+            }
+            healthBarBG.alpha += 0.03;
+            healthBar.alpha += 0.03;
+            iconP1.alpha += 0.03;
+            iconP2.alpha += 0.03;
+        }
+        if (curStep == 1558 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 2450 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 3416 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+        }
+        if (curStep == 1387 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3769 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3769 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-up');
+            add(dad);
+        }
+        if (curStep == 3769 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710, 'bf-guitar-up');
+            add(boyfriend);
+            guitar.alpha = 0;
+        }
+        if (curStep == 3825 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(905,710, 'bf-normal');
+            add(dad);
+        }
+        if (curStep == 2829 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3825 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3825 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(905,710,'bf-normal');
+            add(boyfriend);
+        }
+        if (curStep == 3872 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(10,360, 'evil-bf-guitar-discharge');
+            add(dad);
+            dad.playAnim('guitarSmash');
+        }
+        if (curStep == 3872 && curSong == 'Discharge')
+        {
+            remove(boyfriend);
+            boyfriend = new Boyfriend(805,710,'bf-throw');
+            add(boyfriend);
+        }
+        if (curStep == 3875 && curSong == 'Discharge')
+        {
+            FlxG.camera.fade(FlxColor.WHITE, 0.4);
+        }
+        if (curStep == 928 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1710 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3547 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 1554 && curSong == 'Discharge')
+        {
+            remove(dad);
+            dad = new Character(-10,360, 'evil-bf-poof');
+            add(dad);
+        }
+        if (curStep == 3782 && curSong == 'Discharge')
+        {
+            FlxTween.tween(explode, {alpha: 0.0}, 0.8, 
+		{ease: FlxEase.quadInOut});
+        }
+        if (curStep >= 3821 && curSong == 'Discharge')
+        {
+            funnyWhite.alpha -= 0.01;
+        }
+
 	override function beatHit()
 	{
 		super.beatHit();

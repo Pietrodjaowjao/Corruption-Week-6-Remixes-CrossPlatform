@@ -8,3 +8,4 @@ mall
 mallEvil
 school
 schoolEvil
+BFMind3
