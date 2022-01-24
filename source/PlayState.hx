@@ -145,9 +145,9 @@ class PlayState extends MusicBeatState
 	private static var prevCamFollowPos:FlxObject;
 	private static var resetSpriteCache:Bool = false;
 
-	private var strumLineNotes:FlxTypedGroup<StrumNote>;
-	private var playerStrums:FlxTypedGroup<StrumNote>;
-	private var enemyStrums:FlxTypedGroup<StrumNote>;
+	public var strumLineNotes:FlxTypedGroup<StrumNote>;
+	public var opponentStrums:FlxTypedGroup<StrumNote>;
+	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	public var camZooming:Bool = false;
@@ -190,39 +190,13 @@ class PlayState extends MusicBeatState
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
 
-	var phillyCityLights:FlxTypedGroup<BGSprite>;
-	var phillyTrain:BGSprite;
-	var blammedLightsBlack:ModchartSprite;
-	var blammedLightsBlackTween:FlxTween;
-	var phillyCityLightsEvent:FlxTypedGroup<BGSprite>;
-	var phillyCityLightsEventTween:FlxTween;
-	var trainSound:FlxSound;
-
-	var limoKillingState:Int = 0;
-	var limo:BGSprite;
-	var limoMetalPole:BGSprite;
-	var limoLight:BGSprite;
-	var limoCorpse:BGSprite;
-	var limoCorpseTwo:BGSprite;
-	var bgLimo:BGSprite;
-	var grpLimoParticles:FlxTypedGroup<BGSprite>;
-	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
-	var fastCar:BGSprite;
-
-	var upperBoppers:BGSprite;
-	var bottomBoppers:BGSprite;
-	var santa:BGSprite;
-	var heyTimer:Float;
-	
-    // shit for discharge
+   // shit for discharge
 	var cave1:FlxSprite;
 	var cave2:FlxSprite;
 	var space:FlxSprite;
 	var popup:FlxSprite;
 	var cave3:FlxSprite;
 	var guitarStrumline:FlxSprite;
-	var smolOverlay:FlxSprite;
-	var neurosesbg:FlxSprite;
     var cave1alt:FlxSprite;
     var cave2alt:FlxSprite;
     var cave3alt:FlxSprite;
@@ -252,11 +226,30 @@ class PlayState extends MusicBeatState
 	var comeON:FlxSprite;
 	var thePhoto:FlxSprite;
 	var guitar:FlxSprite;
-    var picocut:FlxSprite;
-    var phillycut:FlxSprite;
-    var blammedcut1:FlxSprite;
-    var blammedcut2:FlxSprite;
-    var neurosesStaticOverlay:FlxSprite;
+
+	var phillyCityLights:FlxTypedGroup<BGSprite>;
+	var phillyTrain:BGSprite;
+	var blammedLightsBlack:ModchartSprite;
+	var blammedLightsBlackTween:FlxTween;
+	var phillyCityLightsEvent:FlxTypedGroup<BGSprite>;
+	var phillyCityLightsEventTween:FlxTween;
+	var trainSound:FlxSound;
+
+	var limoKillingState:Int = 0;
+	var limo:BGSprite;
+	var limoMetalPole:BGSprite;
+	var limoLight:BGSprite;
+	var limoCorpse:BGSprite;
+	var limoCorpseTwo:BGSprite;
+	var bgLimo:BGSprite;
+	var grpLimoParticles:FlxTypedGroup<BGSprite>;
+	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
+	var fastCar:BGSprite;
+
+	var upperBoppers:BGSprite;
+	var bottomBoppers:BGSprite;
+	var santa:BGSprite;
+	var heyTimer:Float;
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
@@ -438,12 +431,8 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 				}
 
-			case 'spookyD1': //Week 2 - Day 1
-				if(!ClientPrefs.lowQuality) {
+			case 'spookyD1': //Spooky Week - Day 1
 					halloweenBG = new BGSprite('HalloweenBG_D1', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
-				} else {
-					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
-				}
 				add(halloweenBG);
 
 				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
@@ -455,12 +444,8 @@ class PlayState extends MusicBeatState
 				CoolUtil.precacheSound('thunder_1');
 				CoolUtil.precacheSound('thunder_2');
 
-			case 'spookyD2': //Week 2 - Day 2
-				if(!ClientPrefs.lowQuality) {
+			case 'spookyD2': //Spooky Week - Day 2
 					halloweenBG = new BGSprite('HalloweenBG_D2', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
-				} else {
-					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
-				}
 				add(halloweenBG);
 
 				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
@@ -472,29 +457,8 @@ class PlayState extends MusicBeatState
 				CoolUtil.precacheSound('thunder_1');
 				CoolUtil.precacheSound('thunder_2');
 
-			case 'spookyD3': //Week 2 - Day 3
-				if(!ClientPrefs.lowQuality) {
+			case 'spookyD3': //Spooky Week - Day 3
 					halloweenBG = new BGSprite('HalloweenBG_D3', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
-				} else {
-					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
-				}
-				add(halloweenBG);
-
-				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
-				halloweenWhite.makeGraphic(Std.int(FlxG.width * 3), Std.int(FlxG.height * 3), FlxColor.WHITE);
-				halloweenWhite.alpha = 0;
-				halloweenWhite.blend = ADD;
-
-				//PRECACHE SOUNDS
-				CoolUtil.precacheSound('thunder_1');
-				CoolUtil.precacheSound('thunder_2');
-
-			case 'spooky': //Week 2
-				if(!ClientPrefs.lowQuality) {
-					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
-				} else {
-					halloweenBG = new BGSprite('halloween_bg_low', -200, -100);
-				}
 				add(halloweenBG);
 
 				halloweenWhite = new BGSprite(null, -FlxG.width, -FlxG.height, 0, 0);
@@ -544,7 +508,56 @@ class PlayState extends MusicBeatState
 				var street:BGSprite = new BGSprite('philly/street', -40, 50);
 				add(street);
 
-				    case 'BFMind3': //Discharge Stage
+			case 'limo': //Week 4
+				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
+				add(skyBG);
+
+				if(!ClientPrefs.lowQuality) {
+					limoMetalPole = new BGSprite('gore/metalPole', -500, 220, 0.4, 0.4);
+					add(limoMetalPole);
+
+					bgLimo = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], true);
+					add(bgLimo);
+
+					limoCorpse = new BGSprite('gore/noooooo', -500, limoMetalPole.y - 130, 0.4, 0.4, ['Henchmen on rail'], true);
+					add(limoCorpse);
+
+					limoCorpseTwo = new BGSprite('gore/noooooo', -500, limoMetalPole.y, 0.4, 0.4, ['henchmen death'], true);
+					add(limoCorpseTwo);
+
+					grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
+					add(grpLimoDancers);
+
+					for (i in 0...5)
+					{
+						var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - 400);
+						dancer.scrollFactor.set(0.4, 0.4);
+						grpLimoDancers.add(dancer);
+					}
+
+					limoLight = new BGSprite('gore/coldHeartKiller', limoMetalPole.x - 180, limoMetalPole.y - 80, 0.4, 0.4);
+					add(limoLight);
+
+					grpLimoParticles = new FlxTypedGroup<BGSprite>();
+					add(grpLimoParticles);
+
+					//PRECACHE BLOOD
+					var particle:BGSprite = new BGSprite('gore/stupidBlood', -400, -400, 0.4, 0.4, ['blood'], false);
+					particle.alpha = 0.01;
+					grpLimoParticles.add(particle);
+					resetLimoKill();
+
+					//PRECACHE SOUND
+					CoolUtil.precacheSound('dancerdeath');
+				}
+
+				limo = new BGSprite('limo/limoDrive', -120, 550, 1, 1, ['Limo stage'], true);
+
+				fastCar = new BGSprite('limo/fastCarLol', -300, 160);
+				fastCar.active = true;
+				limoKillingState = 0;
+
+                  case 'BFMind3':
                           defaultCamZoom = 0.85;
 
                           neurosesbg = new FlxSprite(-600, -125).loadGraphic(Paths.image('dischargeAssets/Discharge_End_BG'));
@@ -792,55 +805,6 @@ crack3.animation.play('idle');
                             thePhoto.scrollFactor.set(0.9, 0.9);
                             add(thePhoto);
 
-			case 'limo': //Week 4
-				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
-				add(skyBG);
-
-				if(!ClientPrefs.lowQuality) {
-					limoMetalPole = new BGSprite('gore/metalPole', -500, 220, 0.4, 0.4);
-					add(limoMetalPole);
-
-					bgLimo = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], true);
-					add(bgLimo);
-
-					limoCorpse = new BGSprite('gore/noooooo', -500, limoMetalPole.y - 130, 0.4, 0.4, ['Henchmen on rail'], true);
-					add(limoCorpse);
-
-					limoCorpseTwo = new BGSprite('gore/noooooo', -500, limoMetalPole.y, 0.4, 0.4, ['henchmen death'], true);
-					add(limoCorpseTwo);
-
-					grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
-					add(grpLimoDancers);
-
-					for (i in 0...5)
-					{
-						var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - 400);
-						dancer.scrollFactor.set(0.4, 0.4);
-						grpLimoDancers.add(dancer);
-					}
-
-					limoLight = new BGSprite('gore/coldHeartKiller', limoMetalPole.x - 180, limoMetalPole.y - 80, 0.4, 0.4);
-					add(limoLight);
-
-					grpLimoParticles = new FlxTypedGroup<BGSprite>();
-					add(grpLimoParticles);
-
-					//PRECACHE BLOOD
-					var particle:BGSprite = new BGSprite('gore/stupidBlood', -400, -400, 0.4, 0.4, ['blood'], false);
-					particle.alpha = 0.01;
-					grpLimoParticles.add(particle);
-					resetLimoKill();
-
-					//PRECACHE SOUND
-					CoolUtil.precacheSound('dancerdeath');
-				}
-
-				limo = new BGSprite('limo/limoDrive', -120, 550, 1, 1, ['Limo stage'], true);
-
-				fastCar = new BGSprite('limo/fastCarLol', -300, 160);
-				fastCar.active = true;
-				limoKillingState = 0;
-
 			case 'mall': //Week 5 - Cocoa, Eggnog
 				var bg:BGSprite = new BGSprite('christmas/bgWalls', -1000, -500, 0.2, 0.2);
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
@@ -993,13 +957,6 @@ crack3.animation.play('idle');
 		// Shitty layering but whatev it works LOL
 		if (curStage == 'limo')
 			add(limo);
-
-		if (curStage == 'BFMind3'){
-				add(guitarStrumline);
-				if(guitarStrumline != null)guitarStrumline.cameras = [camHUD];
-		}
-
-
 
 		add(dadGroup);
 		add(boyfriendGroup);
@@ -1160,6 +1117,10 @@ crack3.animation.play('idle');
 		add(strumLineNotes);
 		add(grpNoteSplashes);
 
+		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		grpNoteSplashes.add(splash);
+		splash.alpha = 0.0;
+
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -1218,10 +1179,6 @@ crack3.animation.play('idle');
 		FlxG.fixedTimestep = false;
 		moveCameraSection(0);
 
-				guitarStrumline = new FlxSprite().loadGraphic(Paths.image("dischargeAssets/GH_Notes_Strums"));
-				guitarStrumline.alpha = 0;
-				guitarStrumline.scrollFactor.set();
-
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1229,15 +1186,7 @@ crack3.animation.play('idle');
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
-		if (curSong == 'Discharge'){
-		healthBarBG.alpha = 0;
-		}
 		add(healthBarBG);
-
-                          smolOverlay = new FlxSprite(-1050, -600).loadGraphic(Paths.image('mind2/SmolOverlay'));
-                          smolOverlay.cameras = [camHUD];
-                          smolOverlay.setGraphicSize(Std.int(smolOverlay.width * 0.84));
-
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
@@ -1245,39 +1194,19 @@ crack3.animation.play('idle');
 		healthBar.scrollFactor.set();
 		// healthBar
 		healthBar.visible = !ClientPrefs.hideHud;
-		if (curSong == 'Discharge'){
-		healthBar.alpha = 0;
-		}
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		iconP1.visible = !ClientPrefs.hideHud;
-		if (curSong == 'Discharge'){
-		iconP1.alpha = 0;
-		}
 		add(iconP1);
 
 		iconP2 = new HealthIcon(dad.healthIcon, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		iconP2.visible = !ClientPrefs.hideHud;
-		if (curSong == 'Discharge'){
-		iconP2.alpha = 0;
 		add(iconP2);
 		reloadHealthBarColors();
-		}
-		if (curSong == 'Strength-Of-Will'){
-		iconP2.alpha = 0;
-		}
-
-		if (curSong == 'Discharge'){
-		dad.visible = false;
-		}
-
-		if (curSong == 'Strength-Of-Will'){
-		dad.visible = false;
-		}
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1295,15 +1224,6 @@ crack3.animation.play('idle');
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
-
-                 neurosesStaticOverlay = new FlxSprite(-150, -75);
-                 neurosesStaticOverlay.frames = Paths.getSparrowAtlas('mind2/NeurosesStaticOverlay');
-                 neurosesStaticOverlay.animation.addByPrefix('idle', 'NeurosesStaticOverlay', 24);
-                 neurosesStaticOverlay.animation.play('idle');
-                 neurosesStaticOverlay.scrollFactor.set(0.9, 0.9);
-                 neurosesStaticOverlay.screenCenter();
-                 neurosesStaticOverlay.alpha = 0;
-                 add(neurosesStaticOverlay);
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
@@ -1670,17 +1590,7 @@ crack3.animation.play('idle');
 		if(startedCountdown) {
 			callOnLuas('onStartCountdown', []);
 			return;
-
-        if (SONG.song.toLowerCase() == 'discharge')
-        {
-            dischargeSongGenerateStaticArrows(1, 'discharge');
-        }
-        else
-        {
-            generateStaticArrows(0, SONG.noteStyle);
-            generateStaticArrows(1, SONG.noteStyle);
-        }
-      }
+		}
 
 		inCutscene = false;
 		var ret:Dynamic = callOnLuas('onStartCountdown', []);
@@ -2023,64 +1933,6 @@ crack3.animation.play('idle');
 		generatedMusic = true;
 	}
 
-	function two():Void
-		{
-			var two:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/ready'));
-			two.scrollFactor.set();
-			two.screenCenter();
-			two.y -= 100;
-			two.alpha = 0.5;
-					add(two);
-					FlxTween.tween(two, {y: two.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							two.destroy();
-						}
-					});
-					
-		}
-
-		function one():Void
-			{
-				var one:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/set'));
-				one.scrollFactor.set();
-				one.screenCenter();
-				one.y -= 100;
-				one.alpha = 0.5;
-
-						add(one);
-						FlxTween.tween(one, {y: one.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								one.destroy();
-							}
-						});
-						
-			}
-	
-	function soulGo():Void
-		{
-			var gofun:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/go'));
-			gofun.scrollFactor.set();
-
-			gofun.updateHitbox();
-
-			gofun.screenCenter();
-			gofun.y -= 100;
-			gofun.alpha = 0.5;
-
-					add(gofun);
-					FlxTween.tween(gofun, {y: gofun.y += 100, alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							gofun.destroy();
-						}
-					});
-		}
-
 	function eventPushed(event:Array<Dynamic>) {
 		switch(event[2]) {
 			case 'Change Character':
@@ -2130,31 +1982,31 @@ crack3.animation.play('idle');
 	}
 
 	private function generateStaticArrows(player:Int):Void
+	{
+		for (i in 0...4)
 		{
-			for (i in 0...4)
+			// FlxG.log.add(i);
+			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
+			if (!isStoryMode)
 			{
-				// FlxG.log.add(i);
-				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
-				if (!isStoryMode)
-				{
-					babyArrow.y -= 10;
-					babyArrow.alpha = 0;
-					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
-				}
-	
-				if (player == 1)
-				{
-					playerStrums.add(babyArrow);
-				}
-				else
-				{
-					opponentStrums.add(babyArrow);
-				}
-	
-				strumLineNotes.add(babyArrow);
-				babyArrow.postAddedToGroup();
+				babyArrow.y -= 10;
+				babyArrow.alpha = 0;
+				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
+
+			if (player == 1)
+			{
+				playerStrums.add(babyArrow);
+			}
+			else
+			{
+				opponentStrums.add(babyArrow);
+			}
+
+			strumLineNotes.add(babyArrow);
+			babyArrow.postAddedToGroup();
 		}
+	}
 
 	override function openSubState(SubState:FlxSubState)
 	{
@@ -3306,257 +3158,6 @@ crack3.animation.play('idle');
 		
 	}
 
-	function dischargeSongGenerateStaticArrows(player:Int,style:String,tweenShit:Bool = true):Void
-	{
-		for (i in 0...4)
-		{
-			// FlxG.log.add(i);
-				var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
-            
-			switch (style)
-			{
-				case 'pixel':
-					babyArrow.loadGraphic(Paths.image('pixelAssets/pixelUI/arrows-pixels'), true, 17, 17);
-					babyArrow.animation.add('green', [6]);
-					babyArrow.animation.add('red', [7]);
-					babyArrow.animation.add('blue', [5]);
-					babyArrow.animation.add('purplel', [4]);
-
-					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
-					babyArrow.updateHitbox();
-					babyArrow.antialiasing = false;
-
-					switch (Math.abs(i))
-					{
-						case 0:
-							babyArrow.x += Note.swagWidth * 0;
-							babyArrow.animation.add('static', [0]);
-							babyArrow.animation.add('pressed', [4, 8], 12, false);
-							babyArrow.animation.add('confirm', [12, 16], 24, false);
-						case 1:
-							babyArrow.x += Note.swagWidth * 1;
-							babyArrow.animation.add('static', [1]);
-							babyArrow.animation.add('pressed', [5, 9], 12, false);
-							babyArrow.animation.add('confirm', [13, 17], 24, false);
-						case 2:
-							babyArrow.x += Note.swagWidth * 2;
-							babyArrow.animation.add('static', [2]);
-							babyArrow.animation.add('pressed', [6, 10], 12, false);
-							babyArrow.animation.add('confirm', [14, 18], 12, false);
-						case 3:
-							babyArrow.x += Note.swagWidth * 3;
-							babyArrow.animation.add('static', [3]);
-							babyArrow.animation.add('pressed', [7, 11], 12, false);
-							babyArrow.animation.add('confirm', [15, 19], 24, false);
-					}
-				case 'guitar':
-					babyArrow.frames = Paths.getSparrowAtlas('dischargeAssets/GH_Notes');
-					babyArrow.animation.addByPrefix('green', 'upNoteBaby');
-					babyArrow.animation.addByPrefix('blue', 'downNoteBaby');
-					babyArrow.animation.addByPrefix('purple', 'leftNoteBaby');
-					babyArrow.animation.addByPrefix('red', 'rightNoteBaby');
-	
-					babyArrow.antialiasing = true;
-	
-					switch (Math.abs(i))
-					{
-						case 0:
-							babyArrow.x += Note.swagWidth * 0 - 280;
-							babyArrow.animation.addByPrefix('static', 'leftNoteBaby');
-							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
-							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
-						case 1:
-							babyArrow.x += Note.swagWidth * 1 - 280;
-							babyArrow.animation.addByPrefix('static', 'downNoteBaby');
-							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
-							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
-						case 2:
-							babyArrow.x += Note.swagWidth * 2 - 280;
-							babyArrow.animation.addByPrefix('static', 'upNoteBaby');
-							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
-							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
-						case 3:
-							babyArrow.x += Note.swagWidth * 3 - 280;
-							babyArrow.animation.addByPrefix('static', 'rightNoteBaby');
-							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
-							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
-						}
-				case 'rootsArrows':
-					babyArrow.loadGraphic(Paths.image('pixelAssets/pixelUI/rootsArrows'), true, 17, 17);
-					babyArrow.animation.add('green', [6]);
-					babyArrow.animation.add('red', [7]);
-					babyArrow.animation.add('blue', [5]);
-					babyArrow.animation.add('purplel', [4]);
-
-					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
-					babyArrow.updateHitbox();
-					babyArrow.antialiasing = false;
-
-					switch (Math.abs(i))
-					{
-						case 0:
-							babyArrow.x += Note.swagWidth * 0;
-							babyArrow.animation.add('static', [0]);
-							babyArrow.animation.add('pressed', [4, 8], 12, false);
-							babyArrow.animation.add('confirm', [12, 16], 24, false);
-						case 1:
-							babyArrow.x += Note.swagWidth * 1;
-							babyArrow.animation.add('static', [1]);
-							babyArrow.animation.add('pressed', [5, 9], 12, false);
-							babyArrow.animation.add('confirm', [13, 17], 24, false);
-						case 2:
-							babyArrow.x += Note.swagWidth * 2;
-							babyArrow.animation.add('static', [2]);
-							babyArrow.animation.add('pressed', [6, 10], 12, false);
-							babyArrow.animation.add('confirm', [14, 18], 12, false);
-						case 3:
-							babyArrow.x += Note.swagWidth * 3;
-							babyArrow.animation.add('static', [3]);
-							babyArrow.animation.add('pressed', [7, 11], 12, false);
-							babyArrow.animation.add('confirm', [15, 19], 24, false);
-					}
-				
-					case 'normal':
-                        babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets_NORMAL');
-                        babyArrow.animation.addByPrefix('green', 'arrowUP');
-                        babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-                        babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-                        babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
-    
-                        babyArrow.antialiasing = true;
-                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
-    
-                        switch (Math.abs(i))
-                        {
-                            case 0:
-                                babyArrow.x += Note.swagWidth * 0;
-                                babyArrow.animation.addByPrefix('static', 'arrowLEFT');
-                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
-                            case 1:
-                                babyArrow.x += Note.swagWidth * 1;
-                                babyArrow.animation.addByPrefix('static', 'arrowDOWN');
-                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
-                            case 2:
-                                babyArrow.x += Note.swagWidth * 2;
-                                babyArrow.animation.addByPrefix('static', 'arrowUP');
-                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
-                            case 3:
-                                babyArrow.x += Note.swagWidth * 3;
-                                babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
-                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
-						}
-					case 'discharge':
-                        babyArrow.frames = Paths.getSparrowAtlas('dischargeAssets/Discharge_Notes');
-                        babyArrow.animation.addByPrefix('green', 'green0');
-                        babyArrow.animation.addByPrefix('blue', 'blue0');
-                        babyArrow.animation.addByPrefix('purple', 'purple0');
-                        babyArrow.animation.addByPrefix('red', 'red0');
-    
-                        babyArrow.antialiasing = true;
-                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
-    
-                        switch (Math.abs(i))
-                        {
-                            case 0:
-                                babyArrow.x += Note.swagWidth * 0;
-                                babyArrow.animation.addByPrefix('static', 'purple0');
-                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
-                            case 1:
-                                babyArrow.x += Note.swagWidth * 1;
-                                babyArrow.animation.addByPrefix('static', 'blue0');
-                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
-                            case 2:
-                                babyArrow.x += Note.swagWidth * 2;
-                                babyArrow.animation.addByPrefix('static', 'green0');
-                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
-                            case 3:
-                                babyArrow.x += Note.swagWidth * 3;
-                                babyArrow.animation.addByPrefix('static', 'red0');
-                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
-						}
-	
-					default:
-                        babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
-                        babyArrow.animation.addByPrefix('green', 'arrowUP');
-                        babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
-                        babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-                        babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
-    
-                        babyArrow.antialiasing = true;
-                        babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
-    
-                        switch (Math.abs(i))
-                        {
-                            case 0:
-                                babyArrow.x += Note.swagWidth * 0;
-                                babyArrow.animation.addByPrefix('static', 'arrowLEFT');
-                                babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
-                            case 1:
-                                babyArrow.x += Note.swagWidth * 1;
-                                babyArrow.animation.addByPrefix('static', 'arrowDOWN');
-                                babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
-                            case 2:
-                                babyArrow.x += Note.swagWidth * 2;
-                                babyArrow.animation.addByPrefix('static', 'arrowUP');
-                                babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
-                            case 3:
-                                babyArrow.x += Note.swagWidth * 3;
-                                babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
-                                babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
-                                babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
-						}
-			}
-
-			babyArrow.updateHitbox();
-			babyArrow.scrollFactor.set();
-
-			if (!isStoryMode)
-			{
-				babyArrow.y -= 10;
-				babyArrow.alpha = 0;
-				FlxTween.tween(babyArrow, {alpha: 1.0}, 0.8, 
-								{ease: FlxEase.quadInOut});
-			}
-
-			babyArrow.ID = i;
-
-			if (player == 1)
-			{
-				playerStrums.add(babyArrow);
-			}
-			else
-			{
-				enemyStrums.add(babyArrow);
-				babyArrow.animation.finishCallback = function(name:String){
-					if(name == "confirm"){
-						babyArrow.animation.play('static', true);
-						babyArrow.centerOffsets();
-						if (dad.curCharacter.startsWith('project-dad'))
-						health -= 0.026;
-					}
-				}
-			}
-
-
-			babyArrow.animation.play('static');
-			babyArrow.x += 50;
-			babyArrow.x += ((FlxG.width / 2) * player);
-
-			strumLineNotes.add(babyArrow);
-		}
-	}
-
 	function tweenCamIn() {
 		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
@@ -4055,23 +3656,18 @@ crack3.animation.play('idle');
 				boyfriend.dance();
 		}
 
-				playerStrums.forEach(function(spr:FlxSprite)
-				{
-					if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
-						spr.animation.play('pressed');
-					if (!holdArray[spr.ID])
-						spr.animation.play('static');
-		 
-					if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school') && !curStage.startsWith('bsideschool'))
-					{
-						spr.centerOffsets();
-						spr.offset.x -= 13;
-						spr.offset.y -= 13;
-					}
-					else
-						spr.centerOffsets();
-				});
+		playerStrums.forEach(function(spr:StrumNote)
+		{
+			if(controlArray[spr.ID] && spr.animation.curAnim.name != 'confirm') {
+				spr.playAnim('pressed');
+				spr.resetAnim = 0;
 			}
+			if(controlReleaseArray[spr.ID]) {
+				spr.playAnim('static');
+				spr.resetAnim = 0;
+			}
+		});
+	}
 
 	function ghostMiss(statement:Bool = false, direction:Int = 0, ?ghostMiss:Bool = false) {
 		if (statement) {
@@ -4080,27 +3676,63 @@ crack3.animation.play('idle');
 		}
 	}
 
-function guitarGo()
-    {
-        guitar.alpha = 0;
-        remove(strumLineNotes);
-        strumLineNotes = new FlxTypedGroup<StrumNote>();
-        add(strumLineNotes);
-        strumLineNotes.cameras = [camHUD];
-        dischargeSongGenerateStaticArrows(1, 'guitar');
-        FlxTween.tween(guitarStrumline, {alpha:1}, 0.8);
-    }
-function guitarPoof()
-    {
-        guitar.alpha = 1;
-        remove(strumLineNotes);
-        strumLineNotes = new FlxTypedGroup<StrumNote>();
-        add(strumLineNotes);
-        strumLineNotes.cameras = [camHUD];
-        dischargeSongGenerateStaticArrows(0, 'discharge');
-        dischargeSongGenerateStaticArrows(1, 'discharge');
-        FlxTween.tween(guitarStrumline, {alpha:0}, 0.8);
-    }
+	function two():Void
+		{
+			var two:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/ready'));
+			two.scrollFactor.set();
+			two.screenCenter();
+			two.y -= 100;
+			two.alpha = 0.5;
+					add(two);
+					FlxTween.tween(two, {y: two.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							two.destroy();
+						}
+					});
+					
+		}
+
+		function one():Void
+			{
+				var one:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/set'));
+				one.scrollFactor.set();
+				one.screenCenter();
+				one.y -= 100;
+				one.alpha = 0.5;
+
+						add(one);
+						FlxTween.tween(one, {y: one.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								one.destroy();
+							}
+						});
+						
+			}
+	
+	function soulGo():Void
+		{
+			var gofun:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/go'));
+			gofun.scrollFactor.set();
+
+			gofun.updateHitbox();
+
+			gofun.screenCenter();
+			gofun.y -= 100;
+			gofun.alpha = 0.5;
+
+					add(gofun);
+					FlxTween.tween(gofun, {y: gofun.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							gofun.destroy();
+						}
+					});
+		}
 
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
 		//Dupe note remove
@@ -4195,6 +3827,8 @@ function guitarPoof()
 
 			if(note.hitCausesMiss) {
 				noteMiss(note);
+				if(!note.noteSplashDisabled && !note.isSustainNote) {
+					spawnNoteSplashOnNote(note);
 				}
 
 				switch(note.noteType) {
@@ -4270,24 +3904,14 @@ function guitarPoof()
 				}
 				StrumPlayAnim(false, Std.int(Math.abs(note.noteData)) % 4, time);
 			} else {
-				playerStrums.forEach(function(spr:FlxSprite)
+				playerStrums.forEach(function(spr:StrumNote)
+				{
+					if (Math.abs(note.noteData) == spr.ID)
 					{
-						if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
-							spr.animation.play('pressed');
-						if (!holdArray[spr.ID])
-							spr.animation.play('static');
-			 
-						if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school') && !curStage.startsWith('bsideschool'))
-						{
-							spr.centerOffsets();
-							spr.offset.x -= 13;
-							spr.offset.y -= 13;
-						}
-						else
-							spr.centerOffsets();
-					});
-				}
-
+						spr.playAnim('confirm', true);
+					}
+				});
+			}
 			note.wasGoodHit = true;
 			vocals.volume = 1;
 
@@ -4303,6 +3927,34 @@ function guitarPoof()
 				note.destroy();
 			}
 		}
+	}
+
+	function spawnNoteSplashOnNote(note:Note) {
+		if(ClientPrefs.noteSplashes && note != null) {
+			var strum:StrumNote = playerStrums.members[note.noteData];
+			if(strum != null) {
+				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+			}
+		}
+	}
+
+	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
+		var skin:String = 'noteSplashes';
+		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
+		
+		var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
+		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
+		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
+		if(note != null) {
+			skin = note.noteSplashTexture;
+			hue = note.noteSplashHue;
+			sat = note.noteSplashSat;
+			brt = note.noteSplashBrt;
+		}
+
+		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
+		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
+		grpNoteSplashes.add(splash);
 	}
 
 	var fastCarCanDrive:Bool = true;
@@ -4586,7 +4238,16 @@ function guitarPoof()
 								
 	
 					}
+				}
+
         //discharge shit :DDDDD 
+         if (curStep == 1 && curSong == 'Discharge')
+        {
+            EnemyStrums.alpha = 0;
+            healthBarBG.alpha = 0;
+            healthBar.alpha = 0;
+
+        }
         if (curStep == 541 && curSong == 'Discharge')
         {
             FlxG.camera.shake(0.03, 0.08);
@@ -4735,10 +4396,6 @@ function guitarPoof()
         {
             portal2.alpha += 0.05;
         }
-        if (curStep == 792 && curSong == 'Discharge')
-        {
-            guitarGo();
-        }
         if (curStep == 662 && curSong == 'Discharge')
         {
             two();
@@ -4765,28 +4422,24 @@ function guitarPoof()
             {
                 strumLineNotes.members[i].alpha = 1;
             }
-            guitarPoof();
             remove(boyfriend);
             boyfriend = new Boyfriend(905,710,'bf-normal');
             add(boyfriend);
         }
         if (curStep == 3470 && curSong == 'Discharge')
         {
-            guitarGo();
             remove(boyfriend);
             boyfriend = new Boyfriend(805,710,'bf-guitar');
             add(boyfriend);
         }
         if (curStep == 3551 && curSong == 'Discharge')
         {
-            guitarPoof();
             remove(boyfriend);
             boyfriend = new Boyfriend(905,710,'bf-normal');
             add(boyfriend);
         }
         if (curStep == 1562 && curSong == 'Discharge')
         {
-            guitarGo();
             remove(boyfriend);
             boyfriend = new Boyfriend(805,710,'bf-guitar');
             add(boyfriend);
@@ -4797,7 +4450,6 @@ function guitarPoof()
             healthBar.alpha += 0.03;
             iconP1.alpha += 0.03;
             iconP2.alpha += 0.03;
-            guitarPoof();
             remove(boyfriend);
             boyfriend = new Boyfriend(905,710,'bf-normal');
             add(boyfriend);
@@ -5078,15 +4730,13 @@ function guitarPoof()
         if (curStep >= 3821 && curSong == 'Discharge')
         {
             funnyWhite.alpha -= 0.01;
-       }
+        }
 	}
-}
- 
+
 	var lightningStrikeBeat:Int = 0;
 	var lightningOffset:Int = 8;
 
 	var lastBeatHit:Int = -1;
-
 	override function beatHit()
 	{
 		super.beatHit();

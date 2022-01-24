@@ -381,6 +381,8 @@ class FunkinLua {
 		//Tween shit, but for strums
 		Lua_helper.add_callback(lua, "noteTweenX", function(tag:String, note:Int, value:Dynamic, duration:Float, ease:String) {
 			cancelTween(tag);
+			if(note < 0) note = 0;
+			var testicle:StrumNote = lePlayState.strumLineNotes.members[note % lePlayState.strumLineNotes.length];
 
 			if(testicle != null) {
 				lePlayState.modchartTweens.set(tag, FlxTween.tween(testicle, {x: value}, duration, {ease: getFlxEaseByString(ease),
@@ -393,6 +395,8 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "noteTweenY", function(tag:String, note:Int, value:Dynamic, duration:Float, ease:String) {
 			cancelTween(tag);
+			if(note < 0) note = 0;
+			var testicle:StrumNote = lePlayState.strumLineNotes.members[note % lePlayState.strumLineNotes.length];
 
 			if(testicle != null) {
 				lePlayState.modchartTweens.set(tag, FlxTween.tween(testicle, {y: value}, duration, {ease: getFlxEaseByString(ease),
@@ -405,6 +409,8 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "noteTweenAngle", function(tag:String, note:Int, value:Dynamic, duration:Float, ease:String) {
 			cancelTween(tag);
+			if(note < 0) note = 0;
+			var testicle:StrumNote = lePlayState.strumLineNotes.members[note % lePlayState.strumLineNotes.length];
 
 			if(testicle != null) {
 				lePlayState.modchartTweens.set(tag, FlxTween.tween(testicle, {angle: value}, duration, {ease: getFlxEaseByString(ease),
@@ -417,6 +423,8 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "noteTweenAlpha", function(tag:String, note:Int, value:Dynamic, duration:Float, ease:String) {
 			cancelTween(tag);
+			if(note < 0) note = 0;
+			var testicle:StrumNote = lePlayState.strumLineNotes.members[note % lePlayState.strumLineNotes.length];
 
 			if(testicle != null) {
 				lePlayState.modchartTweens.set(tag, FlxTween.tween(testicle, {alpha: value}, duration, {ease: getFlxEaseByString(ease),
@@ -1384,3 +1392,4 @@ class DebugLuaText extends FlxText
 		else if(disableTime < 1) alpha = disableTime;
 	}
 }
+
