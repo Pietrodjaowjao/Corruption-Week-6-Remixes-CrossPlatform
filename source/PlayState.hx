@@ -258,6 +258,8 @@ class PlayState extends MusicBeatState
     var blammedcut2:FlxSprite;
     var neurosesStaticOverlay:FlxSprite;
 
+	var daSection:Int = 1;
+
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var bgGhouls:BGSprite;
