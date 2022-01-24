@@ -221,6 +221,8 @@ class PlayState extends MusicBeatState
 	var popup:FlxSprite;
 	var cave3:FlxSprite;
 	var guitarStrumline:FlxSprite;
+	var smolOverlay:FlxSprite;
+	var neurosesbg:FlxSprite;
     var cave1alt:FlxSprite;
     var cave2alt:FlxSprite;
     var cave3alt:FlxSprite;
