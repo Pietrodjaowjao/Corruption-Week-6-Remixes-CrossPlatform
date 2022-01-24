@@ -4244,7 +4244,7 @@ crack3.animation.play('idle');
         //discharge shit :DDDDD 
          if (curStep == 1 && curSong == 'Discharge')
         {
-            opponentStrums.members[i].visible = false;
+            opponentStrums.members.visible = false;
             healthBarBG.alpha = 0;
             healthBar.alpha = 0;
 
