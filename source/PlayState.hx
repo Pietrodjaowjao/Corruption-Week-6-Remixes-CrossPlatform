@@ -2017,6 +2017,64 @@ crack3.animation.play('idle');
 		generatedMusic = true;
 	}
 
+	function two():Void
+		{
+			var two:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/ready'));
+			two.scrollFactor.set();
+			two.screenCenter();
+			two.y -= 100;
+			two.alpha = 0.5;
+					add(two);
+					FlxTween.tween(two, {y: two.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							two.destroy();
+						}
+					});
+					
+		}
+
+		function one():Void
+			{
+				var one:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/set'));
+				one.scrollFactor.set();
+				one.screenCenter();
+				one.y -= 100;
+				one.alpha = 0.5;
+
+						add(one);
+						FlxTween.tween(one, {y: one.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								one.destroy();
+							}
+						});
+						
+			}
+	
+	function soulGo():Void
+		{
+			var gofun:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dischargeAssets/go'));
+			gofun.scrollFactor.set();
+
+			gofun.updateHitbox();
+
+			gofun.screenCenter();
+			gofun.y -= 100;
+			gofun.alpha = 0.5;
+
+					add(gofun);
+					FlxTween.tween(gofun, {y: gofun.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							gofun.destroy();
+						}
+					});
+		}
+
 	function eventPushed(event:Array<Dynamic>) {
 		switch(event[2]) {
 			case 'Change Character':
