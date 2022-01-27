@@ -378,6 +378,15 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+                  switch (SONG.player2)
+                  {
+			case 'BFMind3':
+				boyfriend.x -= -170;
+				boyfriend.y += 260;
+				dad.x -= 100;
+				dad.y += 260;
+                      }
+
 		var stageData:StageFile = StageData.getStageFile(curStage);
 		if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
 			stageData = {
@@ -2175,13 +2184,6 @@ crack3.animation.play('idle');
 						trainFrameTiming = 0;
 					}
 				}
-			case 'BFMind3':
-				boyfriend.x -= -170;
-				boyfriend.y += 260;
-				dad.x -= 100;
-				dad.y += 260;
-		
-}
 				phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
 			case 'limo':
 				if(!ClientPrefs.lowQuality) {
