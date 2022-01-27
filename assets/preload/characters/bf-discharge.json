@@ -24,6 +24,39 @@
 		},
 		{
 			"offsets": [
+				49,
+				12
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "drugs",
+			"indices": [],
+			"name": "that one anim"
+		},
+		{
+			"offsets": [
+				80,
+				22
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "cocaine",
+			"indices": [],
+			"name": "BF ANIM 2"
+		},
+		{
+			"offsets": [
+				130,
+				322
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "ohSHIT",
+			"indices": [],
+			"name": "bf gets a guitar in his fucking face"
+		},
+		{
+			"offsets": [
 				0,
 				-20
 			],
