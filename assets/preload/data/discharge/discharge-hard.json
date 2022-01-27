@@ -8450,6 +8450,8 @@
 			}
 		],
 		"player2": "evil-bf-poof",
+		"player3": "nogf",
+		"stage": "BFMind3",
 		"song": "Discharge",
 		"noteStyle": "discharge",
 		"needsVoices": false,

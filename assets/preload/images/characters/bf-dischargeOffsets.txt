@@ -1,0 +1,15 @@
+deathLoop 37 5
+ohSHIT 120 322
+singRIGHTmiss 0 37
+singDOWN 0 -20
+singLEFTmiss 35 44
+singUP -8 40
+drugs 49 12
+deathConfirm 76 89
+firstDeath 77 90
+idle 0 10
+singDOWNmiss 9 -2
+singRIGHT -4 13
+cocaine 80 22
+singLEFT 2 17
+singUPmiss 1 51

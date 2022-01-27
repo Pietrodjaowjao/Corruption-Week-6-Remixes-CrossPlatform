@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Evil Boyfriend Idle"
+		},
+		{
+			"offsets": [
+				-62,
+				-10
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "SING LEFT Evil BoyFriend"
+		},
+		{
+			"offsets": [
+				122,
+				152
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "guitarEnter",
+			"indices": [],
+			"name": "Soul BF Play Guitar"
+		},
+		{
+			"offsets": [
+				-58,
+				-18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "SING DOWN Evil BoyFriend"
+		},
+		{
+			"offsets": [
+				-68,
+				64
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "SING UP Evil BoyFriend"
+		},
+		{
+			"offsets": [
+				-14,
+				23
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "SING RIGHT Evil Boyfriend"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "dischargeAssets/Soul_BF_Discharge_Assets",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "soulbf",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

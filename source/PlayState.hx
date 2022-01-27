@@ -2175,6 +2175,13 @@ crack3.animation.play('idle');
 						trainFrameTiming = 0;
 					}
 				}
+			case 'BFMind3':
+				boyfriend.x -= -170;
+				boyfriend.y += 260;
+				dad.x -= 100;
+				dad.y += 260;
+		
+}
 				phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed * 1.5;
 			case 'limo':
 				if(!ClientPrefs.lowQuality) {
@@ -4246,6 +4253,7 @@ crack3.animation.play('idle');
         {
             healthBarBG.alpha = 0;
             healthBar.alpha = 0;
+            dad.alpha = 0;
 
         }
         if (curStep == 541 && curSong == 'Discharge')
@@ -4263,7 +4271,9 @@ crack3.animation.play('idle');
         }
         if (curStep == 561 && curSong == 'Discharge')
         {
-            iconP2.animation.play('evil-bf');
+            healthBarBG.alpha = 1;
+            healthBar.alpha = 1;
+            dad.alpha = 1;
         }
         if (curStep == 561 && curSong == 'Discharge')
         {
