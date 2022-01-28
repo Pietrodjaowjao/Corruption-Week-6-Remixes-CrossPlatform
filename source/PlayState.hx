@@ -4255,7 +4255,6 @@ crack3.animation.play('idle');
         {
             healthBarBG.alpha = 0;
             healthBar.alpha = 0;
-            dad.alpha = 0;
 
         }
         if (curStep == 541 && curSong == 'Discharge')
@@ -4275,7 +4274,6 @@ crack3.animation.play('idle');
         {
             healthBarBG.alpha = 1;
             healthBar.alpha = 1;
-            dad.alpha = 1;
         }
         if (curStep == 561 && curSong == 'Discharge')
         {
