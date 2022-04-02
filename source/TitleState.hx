@@ -41,7 +41,6 @@ class TitleState extends MusicBeatState
 	var blackScreen:FlxSprite;
 	var bgback:FlxSprite;
 	var bgfront:FlxSprite;
-	var waterloop:FlxVideo;
 	var menuart:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -129,6 +128,10 @@ class TitleState extends MusicBeatState
 		menuart.setPosition(-1190, -1360);
 		menuart.scale.set(0.21, 0.21);
 		menuart.antialiasing = ClientPrefs.globalAntialiasing;
+
+               var waterloop = new FlxVideo('videos/waterMenuLoop(LicencedFileWarning).mp4');
+		video.ownCamera();
+		video.updateHitbox();
 
 		swagShader = new ColorSwap();
 
