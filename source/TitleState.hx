@@ -39,11 +39,6 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
-	var bgback:FlxSprite;
-	var bgfront:FlxSprite;
-	var waterloop:FlxVideo;
-       var ngSpr:FlxSprite;
-	var menuart:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -65,10 +60,8 @@ class TitleState extends MusicBeatState
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
-		
-		//trace(path, FileSystem.exists(path));
 
-		/*#if (polymod && !html5)
+		#if (polymod && !html5)
 		if (sys.FileSystem.exists('mods/')) {
 			var folders:Array<String> = [];
 			for (file in sys.FileSystem.readDirectory('mods/')) {
@@ -81,13 +74,36 @@ class TitleState extends MusicBeatState
 				polymod.Polymod.init({modRoot: "mods", dirs: folders});
 			}
 		}
-		#end*/
+		#end
+		
+		#if CHECK_FOR_UPDATES
+		if(!closedState) {
+			trace('checking for update');
+			var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
+			
+			http.onData = function (data:String)
+			{
+				updateVersion = data.split('\n')[0].trim();
+				var curVersion:String = MainMenuState.psychEngineVersion.trim();
+				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				if(updateVersion != curVersion) {
+					trace('versions arent matching!');
+					mustUpdate = true;
+				}
+			}
+			
+			http.onError = function (error) {
+				trace('error: $error');
+			}
+			
+			http.request();
+		}
+		#end
 
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.sound.muteKeys = muteKeys;
 		FlxG.sound.volumeDownKeys = volumeDownKeys;
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		FlxG.keys.preventDefaultKeys = [TAB];
 
 		PlayerSettings.init();
 
@@ -95,35 +111,13 @@ class TitleState extends MusicBeatState
 
 		// DEBUG BULLSHIT
 
-		bgback = new FlxSprite().loadGraphic(Paths.image('bgback'));
-		bgback.setPosition(-380, -180);
-		bgback.scale.set(0.73, 0.67);
-		bgback.antialiasing = ClientPrefs.globalAntialiasing;
-
-		bgfront = new FlxSprite().loadGraphic(Paths.image('bgfront'));
-		bgfront.setPosition(-380, -180);
-		bgfront.scale.set(0.73, 0.67);
-		bgfront.antialiasing = ClientPrefs.globalAntialiasing;
-
-		menuart = new FlxSprite().loadGraphic(Paths.image('menuArtBySarasacuni'));
-		menuart.setPosition(-1190, -1360);
-		menuart.scale.set(0.21, 0.21);
-		menuart.antialiasing = ClientPrefs.globalAntialiasing;
-
 		swagShader = new ColorSwap();
 		super.create();
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
-		
 		ClientPrefs.loadPrefs();
-		
-		Highscore.load();
 
-		if(!initialized && FlxG.save.data != null && FlxG.save.data.fullscreen)
-		{
-			FlxG.fullscreen = FlxG.save.data.fullscreen;
-			//trace('LOADED FULLSCREEN SETTING!!');
-		}
+		Highscore.load();
 
 		if (FlxG.save.data.weekCompleted != null)
 		{
@@ -142,15 +136,11 @@ class TitleState extends MusicBeatState
 			MusicBeatState.switchState(new FlashingState());
 		} else {
 			#if desktop
-			if (!DiscordClient.isInitialized)
-			{
-				DiscordClient.initialize();
-				Application.current.onExit.add (function (exitCode) {
-					DiscordClient.shutdown();
-				});
-			}
+			DiscordClient.initialize();
+			Application.current.onExit.add (function (exitCode) {
+				DiscordClient.shutdown();
+			});
 			#end
-
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				startIntro();
@@ -191,57 +181,67 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu0'), 0);
+				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
 		}
 
-		var bg:FlxSprite = new FlxSprite();
+		Conductor.changeBPM(102);
+		persistentUpdate = true;
 
+		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
 		// bg.updateHitbox();
 		add(bg);
 
+		logoBl = new FlxSprite(-150, -100);
+		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+		logoBl.animation.play('bump');
+		logoBl.updateHitbox();
+		// logoBl.screenCenter();
+		// logoBl.color = FlxColor.BLACK;
+
 		swagShader = new ColorSwap();
-
-		add(bgback);
-		add(bgfront);
-		add(waterloop);
-		add(menuart);
-
-		#if (desktop && MODS_ALLOWED)
-		var path = "mods/" + Paths.currentModDirectory + "/images/titleEnter.png";
-		//trace(path, FileSystem.exists(path));
-		if (!FileSystem.exists(path)){
-			path = "mods/images/titleEnter.png";
+		if(!FlxG.save.data.psykaEasterEgg || !easterEggEnabled) {
+			gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+			gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
+			gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+			gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		}
-		//trace(path, FileSystem.exists(path));
-		if (!FileSystem.exists(path)){
-			path = "assets/images/titleEnter.png";
+		else //Psyka easter egg
+		{
+			gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.04);
+			gfDance.frames = Paths.getSparrowAtlas('psykaDanceTitle');
+			gfDance.animation.addByIndices('danceLeft', 'psykaDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+			gfDance.animation.addByIndices('danceRight', 'psykaDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		}
-		//trace(path, FileSystem.exists(path));
-		titleText.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
-		#else
-		
+		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
+		add(gfDance);
+		gfDance.shader = swagShader.shader;
+		add(logoBl);
+		//logoBl.shader = swagShader.shader;
+
+		titleText = new FlxSprite(100, FlxG.height * 0.8);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		#end
 		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
-		titleText.setPosition(777, 490);
 		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
-		titleText.scale.set(0.3, 0.3);
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
 
-		var logoCorruption:FlxSprite = new FlxSprite().loadGraphic(Paths.image('corruptionLogoPINK'));
-		logoCorruption.setPosition(-297, -149);
-		logoCorruption.scale.set(0.3, 0.3);
-		logoCorruption.antialiasing = ClientPrefs.globalAntialiasing;
-		add(logoCorruption);
+		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
+		logo.screenCenter();
+		logo.antialiasing = ClientPrefs.globalAntialiasing;
+		// add(logo);
+
+		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
+		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -257,13 +257,13 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		add(ngSpr);
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
-		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
+		logoSpr = new FlxSprite(0, FlxG.height * 0.4).loadGraphic(Paths.image('titlelogo'));
+		add(logoSpr);
+		logoSpr.visible = false;
+		logoSpr.setGraphicSize(Std.int(logoSpr.width * 0.55));
+		logoSpr.updateHitbox();
+		logoSpr.screenCenter(X);
+		logoSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
