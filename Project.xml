@@ -101,6 +101,8 @@
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="actuate" />
 	<haxelib name="extension-webm"/>
+        <haxelib name="extension-webview" if="android"/>
+        <haxelib name="AndroidTools" if="android"/>
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->
