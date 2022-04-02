@@ -42,6 +42,7 @@ class TitleState extends MusicBeatState
 	var bgback:FlxSprite;
 	var bgfront:FlxSprite;
 	var waterloop:FlxVideo;
+       var ngSpr:FlxSprite;
 	var menuart:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -198,9 +199,6 @@ class TitleState extends MusicBeatState
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
 		}
-
-		Conductor.changeBPM(titleJSON.bpm);
-		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
 
