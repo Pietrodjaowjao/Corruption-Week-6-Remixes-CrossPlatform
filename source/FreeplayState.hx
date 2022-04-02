@@ -42,6 +42,7 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	var bg:FlxSprite;
+	var soulbf:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
@@ -89,9 +90,17 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('freeplayBG'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+		bg.screenCenter();
+
+		soulbf = new FlxSprite().loadGraphic(Paths.image('freeplaySOUL'));
+		soulbf.antialiasing = ClientPrefs.globalAntialiasing;
+		soulbf.setPosition(635, 0);
+		add(soulbf);
+
+		FlxTween.tween(soulbf, { x:40 }, 1);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);

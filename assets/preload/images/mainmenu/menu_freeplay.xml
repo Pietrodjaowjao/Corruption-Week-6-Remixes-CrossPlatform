@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="options.png">
-<SubTexture name="freeplay white0000" x="0" y="0" width="497" height="118" frameX="0" frameY="0" frameWidth="497" frameHeight="118" />
-<SubTexture name="freeplay basic0000" x="0" y="118" width="497" height="118" frameX="0" frameY="0" frameWidth="497" frameHeight="118" />
+<TextureAtlas imagePath="menu_freeplay">
+<SubTexture name="freeplay basic0000" x="0" y="0" width="644" height="124" frameX="-320" frameY="-70" frameWidth="644" frameHeight="124" />
+<SubTexture name="freeplay white0000" x="644" y="0" width="644" height="124" frameX="-320" frameY="-70" frameWidth="644" frameHeight="124" />
 </TextureAtlas>
