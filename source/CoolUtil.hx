@@ -13,13 +13,8 @@ class CoolUtil
 {
 	// [Difficulty name, Chart file suffix]
 	public static var difficultyStuff:Array<Dynamic> = [
-<<<<<<< HEAD
         ['Normal', ''],
         ['Canon', '-hard']
-=======
-		['Normal', ''],
-		['Canon', '-hard']
->>>>>>> 0b4d70703a281f58f3a581f70044b8a7300d70b5
 	];
 
 	public static function difficultyString():String
