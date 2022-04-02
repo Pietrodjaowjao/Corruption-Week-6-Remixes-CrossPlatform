@@ -64,7 +64,7 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		bf = new FlxSprite(-80).loadGraphic(Paths.image('menuBF'));
+		var bf:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBF'));
 		bf.setGraphicSize(Std.int(magenta.width * 1.175));
 		bf.updateHitbox();
 		bf.screenCenter();
@@ -72,15 +72,18 @@ class MainMenuState extends MusicBeatState
 		bf.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bf);
 
+               bfeyes.x += 40;
+
 		FlxTween.tween(bf, { x:-40 }, 0.75);
 
-		bfeyes = new FlxSprite(-80).loadGraphic(Paths.image('menuBFeye'));
+		var bfeyes = new FlxSprite(-80).loadGraphic(Paths.image('menuBFeye'));
 		bfeyes.setGraphicSize(Std.int(magenta.width * 1.175));
 		bfeyes.updateHitbox();
-		bfeyes.screenCenter();
 		bfeyes.visible = false;
 		bfeyes.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bfeyes);
+
+               bfeyes.x += 40;
 
 		FlxTween.tween(bfeyes, { x:-40 }, 0.75);
 
