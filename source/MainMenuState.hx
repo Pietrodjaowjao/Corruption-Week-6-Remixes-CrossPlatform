@@ -87,11 +87,6 @@ class MainMenuState extends MusicBeatState
 
 		FlxTween.tween(bfeyes, { x:-40 }, 0.75);
 
-			if (controls.ACCEPT)
-			{
-		bfeyes.visible = true;
-                       }
-
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
