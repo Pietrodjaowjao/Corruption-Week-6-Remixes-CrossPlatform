@@ -72,7 +72,7 @@ class MainMenuState extends MusicBeatState
 		bf.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bf);
 
-               bfeyes.x += 40;
+               bf.x += 40;
 
 		FlxTween.tween(bf, { x:-40 }, 0.75);
 
