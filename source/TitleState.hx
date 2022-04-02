@@ -39,6 +39,10 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
+	var bgback:FlxSprite;
+	var bgfront:FlxSprite;
+	var waterloop:FlxVideo;
+	var menuart:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -111,8 +115,27 @@ class TitleState extends MusicBeatState
 
 		// DEBUG BULLSHIT
 
+		bgback = new FlxSprite().loadGraphic(Paths.image('bgback'));
+		bgback.setPosition(-380, -180);
+		bgback.scale.set(0.73, 0.67);
+		bgback.antialiasing = ClientPrefs.globalAntialiasing;
+
+		bgfront = new FlxSprite().loadGraphic(Paths.image('bgfront'));
+		bgfront.setPosition(-380, -180);
+		bgfront.scale.set(0.73, 0.67);
+		bgfront.antialiasing = ClientPrefs.globalAntialiasing;
+
+		menuart = new FlxSprite().loadGraphic(Paths.image('menuArtBySarasacuni'));
+		menuart.setPosition(-1190, -1360);
+		menuart.scale.set(0.21, 0.21);
+		menuart.antialiasing = ClientPrefs.globalAntialiasing;
+
 		swagShader = new ColorSwap();
-		super.create();
+
+		add(bgback);
+		add(bgfront);
+		add(waterloop);
+		add(menuart);
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		ClientPrefs.loadPrefs();
@@ -190,6 +213,14 @@ class TitleState extends MusicBeatState
 		Conductor.changeBPM(102);
 		persistentUpdate = true;
 
+		var bg:FlxSprite = new FlxSprite();
+		
+		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
+			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
+		}else{
+			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		}
+
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
@@ -209,21 +240,16 @@ class TitleState extends MusicBeatState
 		add(logoBl);
 		//logoBl.shader = swagShader.shader;
 
-		titleText = new FlxSprite(100, FlxG.height * 0.3);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
 		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
+		titleText.setPosition(777, 490);
 		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
+		titleText.scale.set(0.3, 0.3);
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
-
-		var corruptionmenu:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('titlemenu'));
-		corruptionmenu.updateHitbox();
-		corruptionmenu.screenCenter();
-		corruptionmenu.antialiasing = ClientPrefs.globalAntialiasing;
-		add(corruptionmenu);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -232,6 +258,12 @@ class TitleState extends MusicBeatState
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
+
+		var logoCorruption:FlxSprite = new FlxSprite().loadGraphic(Paths.image('corruptionLogoPINK'));
+		logoCorruption.setPosition(-297, -149);
+		logoCorruption.scale.set(0.3, 0.3);
+		logoCorruption.antialiasing = ClientPrefs.globalAntialiasing;
+		add(logoCorruption);
 
 		credGroup = new FlxGroup();
 		add(credGroup);
