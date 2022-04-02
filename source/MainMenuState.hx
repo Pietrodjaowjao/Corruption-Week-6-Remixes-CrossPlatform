@@ -64,15 +64,25 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = ClientPrefs.globalAntialiasing;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
-		// magenta.scrollFactor.set();
+		bf = new FlxSprite(-80).loadGraphic(Paths.image('menuBF'));
+		bf.setGraphicSize(Std.int(magenta.width * 1.175));
+		bf.updateHitbox();
+		bf.screenCenter();
+		bf.visible = true;
+		bf.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bf);
+
+		FlxTween.tween(bf, { x:-40 }, 0.75);
+
+		bfeyes = new FlxSprite(-80).loadGraphic(Paths.image('menuBFeye'));
+		bfeyes.setGraphicSize(Std.int(magenta.width * 1.175));
+		bfeyes.updateHitbox();
+		bfeyes.screenCenter();
+		bfeyes.visible = false;
+		bfeyes.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bfeyes);
+
+		FlxTween.tween(bfeyes, { x:-40 }, 0.75);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -171,8 +181,7 @@ class MainMenuState extends MusicBeatState
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+		                       bfeyes.visible = true;
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
