@@ -189,7 +189,6 @@ class MainMenuState extends MusicBeatState
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
-		                       bfeyes.visible = true;
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
