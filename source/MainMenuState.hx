@@ -81,6 +81,13 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
+               var video = new VideoPlayer('videos/urvideo.webm');
+               add(video);
+               video.play();
+               video.finishCallback = () -> {
+               video.play();
+               } 
+
 		menubf = new FlxSprite().loadGraphic(Paths.image('menuBF'));
 		menubf.antialiasing = ClientPrefs.globalAntialiasing;
 		menubf.setPosition(-635, 0);
