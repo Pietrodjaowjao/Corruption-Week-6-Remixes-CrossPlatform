@@ -33,9 +33,28 @@ class MainMenuState extends MusicBeatState
 	
 	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options'];
 
-	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
+	var menubf:FlxSprite;
+	var menubfeye:FlxSprite;
+	var menuSeperators:FlxSprite;
+	var notselect0:FlxSprite;
+	var notselect1:FlxSprite;
+	var notselect2:FlxSprite;
+	var notselect3:FlxSprite;
+	var menu0:FlxSprite;
+	var menu1:FlxSprite;
+	var menu2:FlxSprite;
+	var menu3:FlxSprite;
+	var select0:FlxSprite;
+	var select1:FlxSprite;
+	var select2:FlxSprite;
+	var select3:FlxSprite;
+	var menu0select:FlxSprite;
+	var menu1select:FlxSprite;
+	var menu2select:FlxSprite;
+	var menu3select:FlxSprite;
+	var debugKeys:Array<FlxKey>;
 
 	override function create()
 	{
@@ -57,40 +76,139 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
-		bg.setGraphicSize(Std.int(bg.width * 1.175));
-		bg.updateHitbox();
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBG'));
 		bg.screenCenter();
+		bg.scale.set(1, 1);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		var bf:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBF'));
-		bf.setGraphicSize(Std.int(magenta.width * 1.175));
-		bf.updateHitbox();
-               bf.x += 40;
-		bf.visible = true;
-		bf.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bf);
+		menubf = new FlxSprite().loadGraphic(Paths.image('menuBF'));
+		menubf.antialiasing = ClientPrefs.globalAntialiasing;
+		menubf.setPosition(-635, 0);
+		add(menubf);
 
-		FlxTween.tween(bf, { x:-40 }, 1);
+		menuSeperators = new FlxSprite().loadGraphic(Paths.image('mainmenu/seperators'));
+		menuSeperators.antialiasing = ClientPrefs.globalAntialiasing;
+		menuSeperators.setPosition(0, 0);
+		add(menuSeperators);
 
-		var bfeyes = new FlxSprite(-80).loadGraphic(Paths.image('menuBFeye'));
-		bfeyes.setGraphicSize(Std.int(magenta.width * 1.175));
-		bfeyes.updateHitbox();
-               bfeyes.x += 40;
-		bfeyes.visible = false;
-		bfeyes.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bfeyes);
+		notselect0 = new FlxSprite().loadGraphic(Paths.image('mainmenu/notselect'));
+		notselect0.scale.set(1, 0.95);
+		notselect0.antialiasing = ClientPrefs.globalAntialiasing;
+		notselect0.setPosition(790, 142);
+		add(notselect0);
 
-		FlxTween.tween(bfeyes, { x:-40 }, 1);
+		notselect1 = new FlxSprite().loadGraphic(Paths.image('mainmenu/notselect'));
+		notselect1.scale.set(1, 0.955);
+		notselect1.antialiasing = ClientPrefs.globalAntialiasing;
+		notselect1.setPosition(790, 251);
+		add(notselect1);
+
+		notselect2 = new FlxSprite().loadGraphic(Paths.image('mainmenu/notselect'));
+		notselect2.scale.set(1, 0.953);
+		notselect2.antialiasing = ClientPrefs.globalAntialiasing;
+		notselect2.setPosition(790, 362);
+		add(notselect2);
+
+		notselect3 = new FlxSprite().loadGraphic(Paths.image('mainmenu/notselect'));
+		notselect3.scale.set(1, 0.953);
+		notselect3.antialiasing = ClientPrefs.globalAntialiasing;
+		notselect3.setPosition(790, 473);
+		add(notselect3);
+
+		menu0 = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainmenu0'));
+		menu0.antialiasing = ClientPrefs.globalAntialiasing;
+		menu0.setPosition(750, 165);
+		add(menu0);
+
+		menu1 = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainmenu1'));
+		menu1.antialiasing = ClientPrefs.globalAntialiasing;
+		menu1.setPosition(750, 280);
+		add(menu1);
+
+		menu2 = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainmenu2'));
+		menu2.antialiasing = ClientPrefs.globalAntialiasing;
+		menu2.setPosition(750, 388);
+		add(menu2);
+
+		menu3 = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainmenu3'));
+		menu3.antialiasing = ClientPrefs.globalAntialiasing;
+		menu3.setPosition(750, 500);
+		add(menu3);
+
+		select0 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
+		select0.scale.set(1, 1);
+		select0.antialiasing = ClientPrefs.globalAntialiasing;
+		select0.setPosition(790, 145);
+		select0.visible = false;
+		add(select0);
+
+		select1 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
+		select1.scale.set(1, 1);
+		select1.antialiasing = ClientPrefs.globalAntialiasing;
+		select1.setPosition(790, 255);
+		select1.visible = false;
+		add(select1);
+
+		select2 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
+		select2.scale.set(1, 1);
+		select2.antialiasing = ClientPrefs.globalAntialiasing;
+		select2.setPosition(790, 366);
+		select2.visible = false;
+		add(select2);
+
+		select3 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
+		select3.scale.set(1, 1);
+		select3.antialiasing = ClientPrefs.globalAntialiasing;
+		select3.setPosition(790, 476);
+		select3.visible = false;
+		add(select3);
+
+		menu0select = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainselected0'));
+		menu0select.antialiasing = ClientPrefs.globalAntialiasing;
+		menu0select.setPosition(750, 165);
+		menu0select.visible = false;
+		add(menu0select);
+
+		menu1select = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainselected1'));
+		menu1select.antialiasing = ClientPrefs.globalAntialiasing;
+		menu1select.setPosition(750, 280);
+		menu1select.visible = false;
+		add(menu1select);
+
+		menu2select = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainselected2'));
+		menu2select.antialiasing = ClientPrefs.globalAntialiasing;
+		menu2select.setPosition(750, 388);
+		menu2select.visible = false;
+		add(menu2select);
+
+		menu3select = new FlxSprite().loadGraphic(Paths.image('mainmenu/mainselected3'));
+		menu3select.antialiasing = ClientPrefs.globalAntialiasing;
+		menu3select.setPosition(750, 500);
+		menu3select.visible = false;
+		add(menu3select);
+
+		FlxTween.tween(menubf, { x:-105 }, 1);
+
+		camFollow = new FlxObject(0, 0, 1, 1);
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		add(camFollow);
+		add(camFollowPos);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
+
+		var scale:Float = 1;
+		/*if(optionShit.length > 6) {
+			scale = 6 / optionShit.length;
+		}*/
 
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
 			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			menuItem.scale.x = scale;
+			menuItem.scale.y = scale;
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
@@ -100,7 +218,6 @@ class MainMenuState extends MusicBeatState
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
@@ -181,6 +298,12 @@ class MainMenuState extends MusicBeatState
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
+					menubfeye = new FlxSprite().loadGraphic(Paths.image('menuBFeye'));
+					menubfeye.antialiasing = ClientPrefs.globalAntialiasing;
+					menubfeye.setPosition(-105, 0);
+					add(menubfeye);
+
+					if(ClientPrefs.flashing) FlxG.camera.flash(FlxColor.WHITE, 1);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
