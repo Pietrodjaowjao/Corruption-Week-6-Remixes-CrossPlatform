@@ -54,7 +54,6 @@ class MainMenuState extends MusicBeatState
 	var menu1select:FlxSprite;
 	var menu2select:FlxSprite;
 	var menu3select:FlxSprite;
-	var debugKeys:Array<FlxKey>;
 
 	override function create()
 	{
