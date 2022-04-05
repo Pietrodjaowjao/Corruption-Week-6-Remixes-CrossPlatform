@@ -58,11 +58,9 @@ class MainMenuState extends MusicBeatState
 	var menu1select:FlxSprite;
 	var menu2select:FlxSprite;
 	var menu3select:FlxSprite;
-	var debugKeys:Array<FlxKey>;
 
 	override function create()
 	{
-		WeekData.loadTheFirstEnabledMod();
 
 		FlxG.sound.playMusic(Paths.music('freakyMenu1'), 0);
 
@@ -70,7 +68,6 @@ class MainMenuState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
 
@@ -321,20 +318,13 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										LoadingState.loadAndSwitchState(new options.OptionsState());
+										MusicBeatState.switchState(new OptionsState());
 								}
 							});
 						}
 					});
 				}
 			}
-			#if desktop
-			else if (FlxG.keys.anyJustPressed(debugKeys))
-			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
-			}
-			#end
 		}
 
 		super.update(elapsed);
