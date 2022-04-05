@@ -17,21 +17,25 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.app.Application;
-import Achievements;
 import editors.MasterEditorMenu;
+import flixel.input.keyboard.FlxKey;
 
 using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = 'SENPAI DEMO, original build by corruption team, PietroDev, Theorda, and Dxgamer just maked a recreation'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = ''; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
-	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options'];
+	var optionShit:Array<String> = [
+		'story_mode',
+		'freeplay',
+		'credits',
+		'options'
+	];
 
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
@@ -54,20 +58,23 @@ class MainMenuState extends MusicBeatState
 	var menu1select:FlxSprite;
 	var menu2select:FlxSprite;
 	var menu3select:FlxSprite;
+	var debugKeys:Array<FlxKey>;
 
 	override function create()
 	{
+		WeekData.loadTheFirstEnabledMod();
+
+		FlxG.sound.playMusic(Paths.music('freakyMenu1'), 0);
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
+		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
-		camAchievement = new FlxCamera();
-		camAchievement.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camAchievement);
 		FlxCamera.defaultCameras = [camGame];
 
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -80,13 +87,6 @@ class MainMenuState extends MusicBeatState
 		bg.scale.set(1, 1);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-
-               var video = new VideoPlayer('videos/urvideo.webm');
-               add(video);
-               video.play();
-               video.finishCallback = () -> {
-               video.play();
-               } 
 
 		menubf = new FlxSprite().loadGraphic(Paths.image('menuBF'));
 		menubf.antialiasing = ClientPrefs.globalAntialiasing;
@@ -229,22 +229,13 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 		}
 
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin': Corruption v1.0");
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
-
-		#if ACHIEVEMENTS_ALLOWED
-		Achievements.loadAchievements();
-		var leDate = Date.now();
-		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
-			var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
-			if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
-				Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
-				giveAchievement();
-				ClientPrefs.saveSettings();
-			}
-		}
-		#end
 
 		#if mobileC
 		addVirtualPad(UP_DOWN, A_B);
@@ -252,15 +243,6 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 	}
-
-	#if ACHIEVEMENTS_ALLOWED
-	// Unlocks "Freaky on a Friday Night" achievement
-	function giveAchievement() {
-		add(new AchievementObject('friday_night_play', camAchievement));
-		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-		trace('Giving achievement "friday_night_play"');
-	}
-	#end
 
 	var selectedSomethin:Bool = false;
 
@@ -271,7 +253,8 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
+		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
+		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
 		if (!selectedSomethin)
 		{
@@ -335,23 +318,23 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new StoryMenuState());
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										MusicBeatState.switchState(new OptionsMenu());
+										LoadingState.loadAndSwitchState(new options.OptionsState());
 								}
 							});
 						}
 					});
 				}
 			}
-			else if (FlxG.keys.justPressed.SEVEN)
+			#if desktop
+			else if (FlxG.keys.anyJustPressed(debugKeys))
 			{
 				selectedSomethin = true;
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
+			#end
 		}
 
 		super.update(elapsed);
@@ -371,16 +354,161 @@ class MainMenuState extends MusicBeatState
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
 
+		if (optionShit[curSelected] == 'story_mode')
+		{
+			notselect0.visible = false;
+			select0.visible = true;
+			menu0.visible = false;
+			menu0select.visible = true;
+			notselect1.visible = true;
+			select1.visible = false;
+			menu1.visible = true;
+			menu1select.visible = false;
+			notselect2.visible = true;
+			select2.visible = false;
+			menu2.visible = true;
+			menu2select.visible = false;
+			notselect3.visible = true;
+			select3.visible = false;
+			menu3.visible = true;
+			menu3select.visible = false;
+			notselect0.updateHitbox();
+			select0.updateHitbox();
+			menu0.updateHitbox();
+			menu0select.updateHitbox();
+			notselect1.updateHitbox();
+			select1.updateHitbox();
+			menu1.updateHitbox();
+			menu1select.updateHitbox();
+			notselect2.updateHitbox();
+			select2.updateHitbox();
+			menu2.updateHitbox();
+			menu2select.updateHitbox();
+			notselect3.updateHitbox();
+			select3.updateHitbox();
+			menu3.updateHitbox();
+			menu3select.updateHitbox();
+		}
+		else if (optionShit[curSelected] == 'freeplay')
+		{
+			notselect0.visible = true;
+			select0.visible = false;
+			menu0.visible = true;
+			menu0select.visible = false;
+			notselect1.visible = false;
+			select1.visible = true;
+			menu1.visible = false;
+			menu1select.visible = true;
+			notselect2.visible = true;
+			select2.visible = false;
+			menu2.visible = true;
+			menu2select.visible = false;
+			notselect3.visible = true;
+			select3.visible = false;
+			menu3.visible = true;
+			menu3select.visible = false;
+			notselect0.updateHitbox();
+			select0.updateHitbox();
+			menu0.updateHitbox();
+			menu0select.updateHitbox();
+			notselect1.updateHitbox();
+			select1.updateHitbox();
+			menu1.updateHitbox();
+			menu1select.updateHitbox();
+			notselect2.updateHitbox();
+			select2.updateHitbox();
+			menu2.updateHitbox();
+			menu2select.updateHitbox();
+			notselect3.updateHitbox();
+			select3.updateHitbox();
+			menu3.updateHitbox();
+			menu3select.updateHitbox();
+		}
+		else if (optionShit[curSelected] == 'credits')
+		{
+			notselect0.visible = true;
+			select0.visible = false;
+			menu0.visible = true;
+			menu0select.visible = false;
+			notselect1.visible = true;
+			select1.visible = false;
+			menu1.visible = true;
+			menu1select.visible = false;
+			notselect2.visible = false;
+			select2.visible = true;
+			menu2.visible = false;
+			menu2select.visible = true;
+			notselect3.visible = true;
+			select3.visible = false;
+			menu3.visible = true;
+			menu3select.visible = false;
+			notselect0.updateHitbox();
+			select0.updateHitbox();
+			menu0.updateHitbox();
+			menu0select.updateHitbox();
+			notselect1.updateHitbox();
+			select1.updateHitbox();
+			menu1.updateHitbox();
+			menu1select.updateHitbox();
+			notselect2.updateHitbox();
+			select2.updateHitbox();
+			menu2.updateHitbox();
+			menu2select.updateHitbox();
+			notselect3.updateHitbox();
+			select3.updateHitbox();
+			menu3.updateHitbox();
+			menu3select.updateHitbox();
+		}
+		else if (optionShit[curSelected] == 'options')
+		{
+			notselect0.visible = true;
+			select0.visible = false;
+			menu0.visible = true;
+			menu0select.visible = false;
+			notselect1.visible = true;
+			select1.visible = false;
+			menu1.visible = true;
+			menu1select.visible = false;
+			notselect2.visible = true;
+			select2.visible = false;
+			menu2.visible = true;
+			menu2select.visible = false;
+			notselect3.visible = false;
+			select3.visible = true;
+			menu3.visible = false;
+			menu3select.visible = true;
+			notselect0.updateHitbox();
+			select0.updateHitbox();
+			menu0.updateHitbox();
+			menu0select.updateHitbox();
+			notselect1.updateHitbox();
+			select1.updateHitbox();
+			menu1.updateHitbox();
+			menu1select.updateHitbox();
+			notselect2.updateHitbox();
+			select2.updateHitbox();
+			menu2.updateHitbox();
+			menu2select.updateHitbox();
+			notselect3.updateHitbox();
+			select3.updateHitbox();
+			menu3.updateHitbox();
+			menu3select.updateHitbox();
+		}
+
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			spr.animation.play('idle');
-			spr.offset.y = 0;
 			spr.updateHitbox();
 
 			if (spr.ID == curSelected)
 			{
 				spr.animation.play('selected');
-				FlxG.log.add(spr.frameWidth);
+				var add:Float = 0;
+				if(menuItems.length > 4) {
+					add = menuItems.length * 8;
+				}
+				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
+				spr.centerOffsets();
 			}
 		});
 	}
