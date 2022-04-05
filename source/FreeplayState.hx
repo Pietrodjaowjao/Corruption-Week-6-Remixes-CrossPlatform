@@ -100,7 +100,7 @@ class FreeplayState extends MusicBeatState
 		soulbf.setPosition(635, 0);
 		add(soulbf);
 
-		FlxTween.tween(soulbf, { x:40 }, 0.66);
+		FlxTween.tween(soulbf, { x:40 }, 1.25);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
