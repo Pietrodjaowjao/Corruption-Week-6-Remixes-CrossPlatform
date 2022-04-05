@@ -191,7 +191,7 @@ class MainMenuState extends MusicBeatState
 		menu3select.visible = false;
 		add(menu3select);
 
-		FlxTween.tween(menubf, { x:-105 }, 1);
+		FlxTween.tween(menubf, { x:-105 }, 0.66);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -318,7 +318,7 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										MusicBeatState.switchState(new OptionsState());
+										MusicBeatState.switchState(new OptionsMenu());
 								}
 							});
 						}
