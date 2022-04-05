@@ -85,6 +85,13 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
+               var video = new VideoPlayer('videos/ember.webm');
+               add(video);
+               video.play();
+               video.finishCallback = () -> {
+               video.play();
+                    }
+
 		menubf = new FlxSprite().loadGraphic(Paths.image('menuBF'));
 		menubf.antialiasing = ClientPrefs.globalAntialiasing;
 		menubf.setPosition(-635, 0);
@@ -191,7 +198,7 @@ class MainMenuState extends MusicBeatState
 		menu3select.visible = false;
 		add(menu3select);
 
-		FlxTween.tween(menubf, { x:-105 }, 0.66);
+		FlxTween.tween(menubf, { x:-105 }, 1.25);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
