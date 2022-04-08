@@ -61,7 +61,6 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-
 		FlxG.sound.playMusic(Paths.music('freakyMenu1'), 0);
 
 		#if desktop
@@ -84,13 +83,6 @@ class MainMenuState extends MusicBeatState
 		bg.scale.set(1, 1);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-
-               var video = new VideoPlayer('videos/ember.webm');
-               add(video);
-               video.play();
-               video.finishCallback = () -> {
-               video.play();
-                    }
 
 		menubf = new FlxSprite().loadGraphic(Paths.image('menuBF'));
 		menubf.antialiasing = ClientPrefs.globalAntialiasing;
@@ -149,28 +141,28 @@ class MainMenuState extends MusicBeatState
 		select0 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
 		select0.scale.set(1, 1);
 		select0.antialiasing = ClientPrefs.globalAntialiasing;
-		select0.setPosition(790, 145);
+		select0.setPosition(660, 145);
 		select0.visible = false;
 		add(select0);
 
 		select1 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
 		select1.scale.set(1, 1);
 		select1.antialiasing = ClientPrefs.globalAntialiasing;
-		select1.setPosition(790, 255);
+		select1.setPosition(660, 255);
 		select1.visible = false;
 		add(select1);
 
 		select2 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
 		select2.scale.set(1, 1);
 		select2.antialiasing = ClientPrefs.globalAntialiasing;
-		select2.setPosition(790, 366);
+		select2.setPosition(660, 366);
 		select2.visible = false;
 		add(select2);
 
 		select3 = new FlxSprite().loadGraphic(Paths.image('mainmenu/selected'));
 		select3.scale.set(1, 1);
 		select3.antialiasing = ClientPrefs.globalAntialiasing;
-		select3.setPosition(790, 476);
+		select3.setPosition(660, 476);
 		select3.visible = false;
 		add(select3);
 
@@ -198,7 +190,7 @@ class MainMenuState extends MusicBeatState
 		menu3select.visible = false;
 		add(menu3select);
 
-		FlxTween.tween(menubf, { x:-105 }, 1.25);
+		FlxTween.tween(menubf, { x:-105 }, 1);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -240,10 +232,6 @@ class MainMenuState extends MusicBeatState
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
-
-		#if mobileC
-		addVirtualPad(UP_DOWN, A_B);
-		#end
 
 		super.create();
 	}
@@ -325,7 +313,7 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										MusicBeatState.switchState(new OptionsMenu());
+										LoadingState.loadAndSwitchState(new options.OptionsState());
 								}
 							});
 						}

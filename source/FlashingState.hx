@@ -54,7 +54,7 @@ class FlashingState extends MusicBeatState
 						});
 					});
 				} else {
-					ClientPrefs.flashing = false;
+					ClientPrefs.flashing = true;
 					ClientPrefs.globalAntialiasing = false;
                                        ClientPrefs.ghostTapping = false;
                                        ClientPrefs.lowQuality = false;
