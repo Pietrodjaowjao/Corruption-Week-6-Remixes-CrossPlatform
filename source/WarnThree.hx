@@ -11,7 +11,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
-class WarnOne extends MusicBeatState
+class WarnThree extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
