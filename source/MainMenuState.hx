@@ -190,7 +190,7 @@ class MainMenuState extends MusicBeatState
 		menu3select.visible = false;
 		add(menu3select);
 
-		FlxTween.tween(menubf, { x:-105 }, 1);
+		FlxTween.tween(menubf, { x:-105 }, 1.25);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -232,6 +232,10 @@ class MainMenuState extends MusicBeatState
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
+
+		#if mobileC
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 
 		super.create();
 	}
