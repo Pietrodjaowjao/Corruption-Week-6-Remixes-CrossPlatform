@@ -50,6 +50,14 @@ class OptionsState extends MusicBeatState
 		menuBG.antialiasing = ClientPrefs.globalAntialiasing;
 		add(menuBG);
 
+		TV = new FlxSprite().loadGraphic(Paths.image('tv'));
+		TV.color = 0xFFea71fd;
+		TV.setGraphicSize(Std.int(TV.width * 1.1));
+		TV.updateHitbox();
+		TV.screenCenter();
+		TV.antialiasing = ClientPrefs.globalAntialiasing;
+		add(TV);
+
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 
@@ -61,14 +69,6 @@ class OptionsState extends MusicBeatState
 			grpOptions.add(optionText);
 		}
 		changeSelection();
-
-		TV = new FlxSprite().loadGraphic(Paths.image('tv'));
-		TV.color = 0xFFea71fd;
-		TV.setGraphicSize(Std.int(TV.width * 1.1));
-		TV.updateHitbox();
-		TV.screenCenter();
-		TV.antialiasing = ClientPrefs.globalAntialiasing;
-		add(TV);
 
 
 		#if mobileC

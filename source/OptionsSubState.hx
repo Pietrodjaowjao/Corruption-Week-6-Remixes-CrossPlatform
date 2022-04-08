@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 
 class OptionsSubState extends MusicBeatSubstate
 {
-	var textMenuItems:Array<String> = ['Mobile Controls'];
+	var textMenuItems:Array<String> = ['Mobile Controls', 'Enable Flashing', 'Disable Flashing', 'Ghost Tapping On', 'Ghost Tapping Off'];
 
 	var selector:FlxSprite;
 	var curSelected:Int = 0;
@@ -18,6 +18,12 @@ class OptionsSubState extends MusicBeatSubstate
 	public function new()
 	{
 		super();
+
+		var TV:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tv'));
+		TV.updateHitbox();
+		TV.screenCenter();
+		TV.antialiasing = false;
+		add(TV);
 
 		grpOptionsTexts = new FlxTypedGroup<FlxText>();
 		add(grpOptionsTexts);
@@ -35,13 +41,6 @@ class OptionsSubState extends MusicBeatSubstate
 
 	override function create()
 {
-
-		var TV:FlxSprite = new FlxSprite().loadGraphic(Paths.image('tv'));
-		TV.updateHitbox();
-		TV.screenCenter();
-		TV.antialiasing = false;
-		add(TV);
-
 		#if mobileC
 		addVirtualPad(NONE, A_B);
 		#end	
@@ -53,10 +52,10 @@ class OptionsSubState extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
-		if (controls.UI_UP_P)
+		if (controls.UI_UP)
 			curSelected -= 1;
 
-		if (controls.UI_DOWN_P)
+		if (controls.UI_DOWN)
 			curSelected += 1;
 
 		if (curSelected < 0)
@@ -86,8 +85,15 @@ class OptionsSubState extends MusicBeatSubstate
 				case "Mobile Controls":
 					FlxG.state.closeSubState();
 					FlxG.state.openSubState(new CustomControlsState());
+				case "Enable Flashing":
+					ClientPrefs.flashing = true;
+				case "Disable Flashing":
+					ClientPrefs.flashing = false;
+				case "Ghost Tapping Off":
+					ClientPrefs.ghostTapping = false;
+				case "Ghost Tapping On":
+					ClientPrefs.ghostTapping = true;
 			}
 		}
 	}
 }
-
