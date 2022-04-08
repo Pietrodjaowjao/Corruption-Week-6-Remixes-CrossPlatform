@@ -48,7 +48,6 @@ class WarnOne extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 		}
-		#end
 		super.update(elapsed);
 	}
 }

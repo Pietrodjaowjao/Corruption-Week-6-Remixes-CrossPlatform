@@ -47,7 +47,6 @@ class WarnOne extends MusicBeatState
 				FlxG.switchState(new WarnTwo());
 			}
 		}
-		#end
 		super.update(elapsed);
 	}
 }
