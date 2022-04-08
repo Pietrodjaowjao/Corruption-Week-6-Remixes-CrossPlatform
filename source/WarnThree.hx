@@ -41,7 +41,7 @@ class WarnThree extends MusicBeatState
 		{
 			if (touch.justPressed)
 			{
-				MusicBeatState.switchState(new TitleState());
+				FlxG.switchState(new TitleState());
 			}
 		}
 		super.update(elapsed);

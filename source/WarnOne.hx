@@ -41,6 +41,7 @@ class WarnOne extends MusicBeatState
 			if (touch.justPressed)
 			{
 				FlxG.switchState(new WarnTwo());
+		               ClientPrefs.flashing = true;
 			}
 		}
 		super.update(elapsed);
