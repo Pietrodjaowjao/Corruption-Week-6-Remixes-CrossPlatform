@@ -32,10 +32,6 @@ class WarnOne extends MusicBeatState
 		warning1.updateHitbox();
 		warning1.antialiasing = true;
 		add(warning1);
-
-		#if mobileC
-		addVirtualPad(NONE, A_B);
-		#end
 	}
 
 	override function update(elapsed:Float)

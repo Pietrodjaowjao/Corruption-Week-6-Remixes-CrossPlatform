@@ -33,10 +33,6 @@ class WarnThree extends MusicBeatState
 		warning1.updateHitbox();
 		warning1.antialiasing = true;
 		add(warning1);
-
-		#if mobileC
-		addVirtualPad(NONE, A);
-		#end
 	}
 
 	override function update(elapsed:Float)
