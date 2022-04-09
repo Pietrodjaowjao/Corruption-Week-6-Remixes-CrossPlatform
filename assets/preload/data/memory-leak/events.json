@@ -1,0 +1,40 @@
+{
+	"song": {
+		"speed": 2.5,
+		"stage": "sky",
+		"player1": "bfsit",
+		"player2": "evil-bf-poof",
+		"player3": null,
+		"events": [
+			[
+				57504.375,
+				[
+					[
+						"Change Character",
+						"dad",
+						"evil-bf-shader"
+					]
+				]
+			],
+			[
+				57525,
+				[
+					[
+						"Change Character",
+						"BF",
+						"bf-normal"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "nogf",
+		"bpm": 200,
+		"mania": 3,
+		"arrowSkin": "dischargeAssets/Discharge_Notes",
+		"needsVoices": null,
+		"song": "Memory"
+	}
+}

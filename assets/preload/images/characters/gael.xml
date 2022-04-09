@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gael">
+<SubTexture name="gael down0000" x="0" y="0" width="354" height="354" frameX="0" frameY="0" frameWidth="354" frameHeight="354" />
+<SubTexture name="gael up0000" x="354" y="0" width="354" height="354" frameX="0" frameY="0" frameWidth="354" frameHeight="354" />
+<SubTexture name="gael right0000" x="0" y="354" width="354" height="354" frameX="0" frameY="0" frameWidth="354" frameHeight="354" />
+<SubTexture name="gael left0000" x="354" y="354" width="354" height="354" frameX="0" frameY="0" frameWidth="354" frameHeight="354" />
+<SubTexture name="gael idle0000" x="0" y="708" width="354" height="354" frameX="0" frameY="0" frameWidth="354" frameHeight="354" />
+</TextureAtlas>
