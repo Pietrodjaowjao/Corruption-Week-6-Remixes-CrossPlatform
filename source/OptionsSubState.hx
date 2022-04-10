@@ -42,7 +42,7 @@ class OptionsSubState extends MusicBeatSubstate
 	override function create()
 {
 		#if mobileC
-		addVirtualPad(NONE, A_B);
+		addVirtualPad(UP_DOWN, A_B);
 		#end	
 
 		super.create();

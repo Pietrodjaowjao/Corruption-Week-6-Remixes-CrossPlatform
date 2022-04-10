@@ -1,8 +1,5 @@
 {
 	"songs": [
-		["Tormentor", "soulbf", [34, 51, 68]],
-		["Neuroses", "soulbf", [34, 51, 68]],
-		["Discharge", "soulbf", [34, 51, 68]],
 		["Memory-leak", "soulbf", [34, 51, 68]]
 	],
 
@@ -11,11 +8,11 @@
 		"bf",
 		"gf"
 	],
-	"weekBackground": "halloween",
+	"weekBackground": "stage",
 
 	"storyName": "????",
 	"weekBefore": "tutorial",
-	"weekName": "Corrupted Week 2",
+	"weekName": "Corrupted Week 3",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,
