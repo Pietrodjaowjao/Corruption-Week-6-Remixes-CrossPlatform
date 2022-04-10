@@ -68,12 +68,7 @@ class OptionsState extends MusicBeatState
 			optionText.y += (100 * (i - (options.length / 2))) + 50;
 			grpOptions.add(optionText);
 		}
-		changeSelection();
-
-
-		#if mobileC
-		addVirtualPad(UP_DOWN, A_B);
-		#end		
+		changeSelection();	
 
 		super.create();
 	}

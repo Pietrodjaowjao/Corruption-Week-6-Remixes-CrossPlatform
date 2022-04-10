@@ -4282,6 +4282,26 @@ crack3.animation.play('idle');
             crack3.animation.play('idle');
             crack2.alpha = 0;
         }
+        if (curStep == 767 && curSong == 'Memory-leak')
+        {
+            opponentStrums.alpha = 0;
+	addLuaSprite('stageback', false);
+        }
+        if (curStep == 767 && curSong == 'Memory')
+        {
+            opponentStrums.alpha = 0;
+	addLuaSprite('stageback', false);
+        }
+        if (curStep == 800 && curSong == 'Memory-leak')
+        {
+            opponentStrums.alpha = 1;
+	addLuaSprite('sky', false);
+        }
+        if (curStep == 800 && curSong == 'Memory')
+        {
+            opponentStrums.alpha = 1;
+	addLuaSprite('sky', false);
+        }
         if (curStep == 578 && curSong == 'Discharge')
         {
             zapEffect.alpha = 1;

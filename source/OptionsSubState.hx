@@ -43,7 +43,7 @@ class OptionsSubState extends MusicBeatSubstate
 {
 		#if mobileC
 		addVirtualPad(UP_DOWN, A_B);
-		#end	
+		#end
 
 		super.create();
 		}
