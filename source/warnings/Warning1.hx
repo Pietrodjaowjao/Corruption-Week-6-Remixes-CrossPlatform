@@ -29,8 +29,6 @@ class Warning1 extends MusicBeatState
 
 	override function create()
 	{
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
 		PlayerSettings.init();
 
 		FlxG.camera.fade(FlxColor.BLACK, 1, true);

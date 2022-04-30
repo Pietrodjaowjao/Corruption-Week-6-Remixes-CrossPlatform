@@ -4282,18 +4282,6 @@ crack3.animation.play('idle');
             crack3.animation.play('idle');
             crack2.alpha = 0;
         }
-        if (curStep == 767 && curSong == 'Memory')
-        {
-	addLuaSprite('stageback', false);
-        }
-        if (curStep == 800 && curSong == 'Memory-leak')
-        {
-	addLuaSprite('sky', false);
-        }
-        if (curStep == 800 && curSong == 'Memory')
-        {
-	addLuaSprite('sky', false);
-        }
         if (curStep == 578 && curSong == 'Discharge')
         {
             zapEffect.alpha = 1;

@@ -53,7 +53,7 @@ class Warning2 extends MusicBeatState
 	{
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
-			FlxTween.tween(warning1, { x:-320 }, 0.15);
+			FlxTween.tween(warning2, { x:-320 }, 0.15);
 		});
 
 		for (touch in FlxG.touches.list)
