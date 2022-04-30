@@ -49,11 +49,11 @@ class Warning3 extends MusicBeatState
 		add(warning3);
 	}
 
-	override public function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
-			FlxTween.tween(warning3, { x:-320 }, 0.15);
+			FlxTween.tween(warning1, { x:-320 }, 0.15);
 		});
 
 		for (touch in FlxG.touches.list)
@@ -63,7 +63,6 @@ class Warning3 extends MusicBeatState
 			FlxG.switchState(new Warning4());
 			}
 		}
-       }
-
 		super.update(elapsed);
+	}
 }

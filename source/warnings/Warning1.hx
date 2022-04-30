@@ -86,7 +86,7 @@ class Warning1 extends MusicBeatState
 		add(warning1);
 	}
 
-	override public function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
@@ -100,7 +100,6 @@ class Warning1 extends MusicBeatState
 			FlxG.switchState(new Warning2());
 			}
 		}
-       }
-
 		super.update(elapsed);
+	}
 }
