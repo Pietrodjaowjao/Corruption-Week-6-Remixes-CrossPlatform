@@ -82,17 +82,11 @@ class OptionsSubState extends MusicBeatSubstate
 		{
 			switch (textMenuItems[curSelected])
 			{
-				case "Mobile Controls":
-					FlxG.state.closeSubState();
-					FlxG.state.openSubState(new CustomControlsState());
 				case "Enable Flashing":
-					ClientPrefs.flashing = true;
+                                      FlxG.camera.flash(FlxColor.WHITE, 1);
+		FlxG.sound.playMusic(Paths.music('freakyMenu1');
 				case "Disable Flashing":
 					ClientPrefs.flashing = false;
-				case "Ghost Tapping Off":
-					ClientPrefs.ghostTapping = false;
-				case "Ghost Tapping On":
-					ClientPrefs.ghostTapping = true;
 			}
 		}
 	}

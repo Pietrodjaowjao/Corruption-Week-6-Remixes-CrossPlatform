@@ -69,7 +69,7 @@ class Main extends Sprite
 		}
 
 		#if !debug
-		initialState = TitleState;
+		initialState = warnings.Warning1;
 		#end
 
 		ClientPrefs.startControls();
