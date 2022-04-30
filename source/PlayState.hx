@@ -1029,8 +1029,10 @@ crack3.animation.play('idle');
 					gfVersion = 'gf-car';
 				case 'mall' | 'mallEvil':
 					gfVersion = 'gf-christmas';
-				case 'school' | 'schoolEvil':
-					gfVersion = 'gf-pixel';
+				case 'SchoolD1' | 'SchoolD2':
+					antialias = false;
+				case 'glitchAnimatedSchool':
+					antialias = false;
 				default:
 					gfVersion = 'gf';
 			}
@@ -1653,10 +1655,9 @@ crack3.animation.play('idle');
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 
 				var introAlts:Array<String> = introAssets.get('default');
-				var antialias:Bool = ClientPrefs.globalAntialiasing;
+				var antialias:Bool = false;
 				if(isPixelStage) {
 					introAlts = introAssets.get('pixel');
-					antialias = false;
 				}
 
 				// head bopping for bg characters on Mall

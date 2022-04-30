@@ -25,8 +25,25 @@ function onCreate()
     addAnimationByPrefix('bgTrees','treeLoop','tree_',24,true)
     addLuaSprite('bgTrees',false)
     objectPlayAnimation('bgTrees','treeLoop',false)
-    
+
+    if difficulty == 0 then
+        if getPropertyFromClass('ClientPrefs', 'ghostTapping', true) then
+            setPropertyFromClass('ClientPrefs', 'ghostTapping', false)
+        end
+    end
+    if difficulty == 1 then
+        if getProperty('ClientPrefs', 'ghostTapping', false) then
+            setPropertyFromClass('ClientPrefs', 'ghostTapping', true)
+        end
+    end
+    if getProperty('changedDifficulty', true) and difficulty == 0 then
+        setPropertyFromClass('ClientPrefs', 'ghostTapping', false)
+    end
+    if getProperty('changedDifficulty', true) and difficulty == 1 then
+        setPropertyFromClass('ClientPrefs', 'ghostTapping', true)
+    end
 end
+
 function onStepHit()
   if curStep == 64 then
      triggerEvent('Change Character', 'bf', 'bf-pixelD2Glitched2');

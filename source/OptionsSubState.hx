@@ -82,8 +82,11 @@ class OptionsSubState extends MusicBeatSubstate
 		{
 			switch (textMenuItems[curSelected])
 			{
+				case "Mobile Controls":
+				FlxG.switchState(new CustomControlsState());
 				case "Enable Flashing":
                                       FlxG.camera.flash(FlxColor.WHITE, 1);
+					ClientPrefs.flashing = true;
 				case "Disable Flashing":
 					ClientPrefs.flashing = false;
 			}
