@@ -84,7 +84,6 @@ class OptionsSubState extends MusicBeatSubstate
 			{
 				case "Enable Flashing":
                                       FlxG.camera.flash(FlxColor.WHITE, 1);
-		FlxG.sound.playMusic(Paths.music('freakyMenu1');
 				case "Disable Flashing":
 					ClientPrefs.flashing = false;
 			}
