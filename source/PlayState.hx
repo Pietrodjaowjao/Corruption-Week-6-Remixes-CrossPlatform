@@ -567,6 +567,22 @@ class PlayState extends MusicBeatState
 				fastCar.active = true;
 				limoKillingState = 0;
 
+                  case 'LolIdk':
+                          defaultCamZoom = 1.05;
+			trace('hi');
+
+                  case 'SchoolD1':
+                          defaultCamZoom = 1.05;
+			trace('hi');
+
+                  case 'SchoolD2':
+                          defaultCamZoom = 1.05;
+			trace('hi');
+
+                  case 'glitchAnimatedSchool':
+                          defaultCamZoom = 1.05;
+			trace('hi');
+
                   case 'BFMind3':
                           defaultCamZoom = 0.85;
 
@@ -1025,16 +1041,17 @@ crack3.animation.play('idle');
 		if(gfVersion == null || gfVersion.length < 1) {
 			switch (curStage)
 			{
-				case 'limo':
-					gfVersion = 'gf-car';
-				case 'mall' | 'mallEvil':
-					gfVersion = 'gf-christmas';
 				case 'SchoolD1' | 'SchoolD2':
-					antialias = false;
+					ClientPrefs.globalAntialiasing = false;
 				case 'glitchAnimatedSchool':
-					antialias = false;
+					ClientPrefs.globalAntialiasing = false;
+				case 'glitchAnimatedSchool':
+					ClientPrefs.globalAntialiasing = false;
+				case 'LolIdk':
+					ClientPrefs.globalAntialiasing = false;
 				default:
 					gfVersion = 'gf';
+					ClientPrefs.globalAntialiasing = true;
 			}
 			SONG.player3 = gfVersion; //Fix for the Chart Editor
 		}
