@@ -569,19 +569,15 @@ class PlayState extends MusicBeatState
 
                   case 'LolIdk':
                           defaultCamZoom = 1.05;
-			trace('hi');
 
                   case 'SchoolD1':
                           defaultCamZoom = 1.05;
-			trace('hi');
 
                   case 'SchoolD2':
                           defaultCamZoom = 1.05;
-			trace('hi');
 
                   case 'glitchAnimatedSchool':
                           defaultCamZoom = 1.05;
-			trace('hi');
 
                   case 'BFMind3':
                           defaultCamZoom = 0.85;
