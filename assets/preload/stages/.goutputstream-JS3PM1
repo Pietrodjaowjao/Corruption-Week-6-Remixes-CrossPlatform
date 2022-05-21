@@ -1,4 +1,4 @@
---Default Vars (Don't change)
+---Default Vars (Don't change)
 flyspeedbf = 350
 flyspeeddad = 50
 flyspeedrock = 760
@@ -15,7 +15,7 @@ setProperty('iconP1.visible', false)
 setProperty('iconP2.visible', false)
 setProperty('camHUD.visible', false)
 cameraSetTarget('dad')
---Step things
+--Step
        if curStep > 465 then
 canflyfirst = true;
 end
@@ -34,27 +34,27 @@ end
 function onCreate()
 	-- Objects
 
-	makeLuaSprite('stageback', 'escapeAssets/sunbg', -510, -670);
-	makeLuaSprite('sky', 'escapeAssets/totallynotstolefromhim', -510, -555);
-
-	makeLuaSprite('rock', 'escapeAssets/rock', 1250, 830);
-addLuaSprite('rock', false);
-
-	makeAnimatedLuaSprite('speedLines', 'escapeAssets/speedLines', -460, -330)
-	luaSpriteAddAnimationByPrefix('speedLines', 'speedLines', 'speedLines', 24, true)
-addLuaSprite('speedLines', false);
-
-	objectPlayAnimation('speedLines', 'speedLines');
-	scaleObject('speedLines', 1, 1);
+	makeLuaSprite('stageback', 'escapeAssets/sunbg', -510, -300);
+	makeLuaSprite('sky', 'escapeAssets/totallynotstolefromhim', -510, -370);
 
 	setObjectOrder('rock', 4);
 	setObjectOrder('speedLines', 3);
        playSound('soulbf');
 
+	makeLuaSprite('rock', 'escapeAssets/rock', 1250, 830);
+	addLuaSprite('rock', false);
+
+	makeAnimatedLuaSprite('speedLines', 'escapeAssets/speedLines', -460, -330)
+	luaSpriteAddAnimationByPrefix('speedLines', 'speedLines', 'speedLines', 24, true)
+	scaleObject('speedLines', 1, 1);
+
+	addLuaSprite('speedLines', false);
+	 objectPlayAnimation('speedLines', 'speedLines');
+
 
                                                    -- Own Map Scripts
-	setProperty('stageback.scale.x', getProperty('stageback.scale.x') + 0);
-	setProperty('stageback.scale.y', getProperty('stageback.scale.y') + 0);
+	setProperty('stageback.scale.x', getProperty('stageback.scale.x') + 0.1);
+	setProperty('stageback.scale.y', getProperty('stageback.scale.y') + 0.1);
 				setProperty('rock.scale.x', getProperty('rock.scale.x') + 0.9);
 				setProperty('rock.scale.y', getProperty('rock.scale.y') + 0.9);
 
