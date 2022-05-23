@@ -1,0 +1,34 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "BF idle dance instancia 1"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "escapeAssets/bfsit",
+	"position": [
+		350,
+		330
+	],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		180,
+		-130
+	],
+	"sing_duration": 4,
+	"scale": 0.9
+}

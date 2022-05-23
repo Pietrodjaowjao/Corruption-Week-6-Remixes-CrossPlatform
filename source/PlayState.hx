@@ -369,12 +369,14 @@ class PlayState extends MusicBeatState
 					curStage = 'mall';
 				case 'winter-horrorland':
 					curStage = 'mallEvil';
-				case 'senpai' | 'roses':
-					curStage = 'school';
+				case 'senpai':
+					curStage = 'SchoolD1';
 				case 'thorns':
 					curStage = 'schoolEvil';
+				case 'senpai-remix':
+					curStage = 'SchoolD1';
 				default:
-					curStage = 'stage';
+					curStage = 'philly';
 			}
 		}
 
@@ -1039,12 +1041,24 @@ crack3.animation.play('idle');
 			{
 				case 'SchoolD1' | 'SchoolD2':
 					ClientPrefs.globalAntialiasing = false;
+                                       healthBar.visible = false;
+                                       iconP1.visible = false;
+                                       iconP2.visible = false;
 				case 'glitchAnimatedSchool':
 					ClientPrefs.globalAntialiasing = false;
+                                       healthBar.visible = false;
+                                       iconP1.visible = false;
+                                       iconP2.visible = false;
 				case 'glitchAnimatedSchool':
 					ClientPrefs.globalAntialiasing = false;
+                                       healthBar.visible = false;
+                                       iconP1.visible = false;
+                                       iconP2.visible = false;
 				case 'LolIdk':
 					ClientPrefs.globalAntialiasing = false;
+                                       healthBar.visible = false;
+                                       iconP1.visible = false;
+                                       iconP2.visible = false;
 				default:
 					gfVersion = 'gf';
 					ClientPrefs.globalAntialiasing = true;

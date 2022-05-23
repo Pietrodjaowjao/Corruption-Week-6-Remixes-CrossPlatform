@@ -14,6 +14,8 @@ setProperty('scoreTxt.visible', false)
 setProperty('iconP1.visible', false)
 setProperty('iconP2.visible', false)
 setProperty('camHUD.visible', false)
+setProperty('stageback.visible', false)
+setProperty('sky.visible', false)
 cameraSetTarget('dad')
 --Step things
        if curStep > 465 then
@@ -21,12 +23,12 @@ canflyfirst = true;
 end
 	if curStep > 767 then
 setProperty('camHUD.visible', true)
+setProperty('stageback.visible', true)
 canfly = true;
-addLuaSprite('stageback', false);
    end
 	if curStep > 1663 then
-	addLuaSprite('sky', false);
 canfly = false;
+setProperty('sky.visible', true)
    end
 end
 
@@ -35,7 +37,10 @@ function onCreate()
 	-- Objects
 
 	makeLuaSprite('stageback', 'escapeAssets/sunbg', -510, -670);
+       addLuaSprite('stageback', false);
+
 	makeLuaSprite('sky', 'escapeAssets/totallynotstolefromhim', -510, -555);
+	addLuaSprite('sky', false);
 
 	makeLuaSprite('rock', 'escapeAssets/rock', 1250, 830);
 addLuaSprite('rock', false);

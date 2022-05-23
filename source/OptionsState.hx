@@ -473,11 +473,7 @@ class ControlsSubstate extends MusicBeatSubstate {
 				if(curSelected < 0) curSelected = i;
 			}
 		}
-		changeSelection();
-
-		#if mobileC
-		addVirtualPad(FULL, A_B);
-		#end		
+		changeSelection();	
 	}
 
 	var leaving:Bool = false;
